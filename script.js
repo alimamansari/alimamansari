@@ -563,23 +563,6 @@ document.addEventListener('DOMContentLoaded', () => {
             isMouseActive = true;
         });
         
-        // Interactive element hover effects using event delegation (more performant)
-        const interactiveSelector = 'a, button, input[type="submit"], input[type="button"], select, textarea, [role="button"], .clickable, .social-card, .cert-card, .publication-card, .stat-card, .footer-brand, .theme-toggle, .back-to-top';
-        
-        document.addEventListener('mouseover', (e) => {
-            if (e.target.closest(interactiveSelector)) {
-                glow.classList.add('hovered');
-                dot.classList.add('hovered');
-            }
-        });
-        
-        document.addEventListener('mouseout', (e) => {
-            if (!e.target.closest(interactiveSelector) || (e.relatedTarget && !e.relatedTarget.closest(interactiveSelector))) {
-                glow.classList.remove('hovered');
-                dot.classList.remove('hovered');
-            }
-        });
-        
         // Click visual impact
         document.addEventListener('mousedown', () => {
             glow.classList.add('clicked');
