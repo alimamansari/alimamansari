@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV — Alimam Ansari</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* Remove browser URL/date header & footer when printing */
+        @page {
+            size: A4;
+            margin: 12mm 14mm;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #f5f5f0;
+            color: #0f172a;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .page {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 48px 52px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+            border-radius: 4px;
+        }
+
+        /* ── Header ── */
+        .cv-header {
+            border-bottom: 3px solid #0d9488;
+            padding-bottom: 18px;
+            margin-bottom: 22px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: end;
+            gap: 16px;
+        }
+
+        .cv-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.1;
+        }
+
+        .cv-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #0d9488;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 5px;
+        }
+
+        .cv-contacts {
+            font-size: 0.76rem;
+            color: #475569;
+            text-align: right;
+            line-height: 2;
+        }
+
+        .cv-contacts a { color: #0d9488; text-decoration: none; }
+
+        /* ── Section ── */
+        .cv-section { margin-bottom: 20px; }
+
+        .cv-section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: #0d9488;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 4px;
+            margin-bottom: 12px;
+        }
+
+        /* ── Entry ── */
+        .cv-entry {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .cv-entry-title { font-weight: 700; font-size: 0.92rem; color: #0f172a; }
+        .cv-entry-sub { font-size: 0.8rem; color: #0d9488; font-weight: 600; margin-top: 1px; }
+        .cv-entry-date {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.76rem;
+            color: #94a3b8;
+            font-weight: 600;
+            white-space: nowrap;
+            text-align: right;
+        }
+        .cv-entry-desc {
+            font-size: 0.8rem;
+            color: #475569;
+            margin-top: 3px;
+            line-height: 1.6;
+            grid-column: 1 / -1;
+        }
+
+        /* ── Publication ── */
+        .pub-card {
+            background: #f8fafc;
+            border-left: 3px solid #fb923c;
+            padding: 11px 13px;
+            border-radius: 0 6px 6px 0;
+            margin-bottom: 8px;
+        }
+        .pub-title { font-weight: 700; font-size: 0.86rem; color: #0f172a; margin-bottom: 4px; }
+        .pub-meta { font-size: 0.76rem; color: #64748b; }
+        .pub-meta span { color: #fb923c; font-weight: 700; }
+
+        /* ── Skills Grid ── */
+        .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .skill-group-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .skill-bar-row { margin-bottom: 6px; }
+        .skill-bar-label { display: flex; justify-content: space-between; font-size: 0.73rem; color: #475569; margin-bottom: 3px; }
+        .skill-bar-track { height: 5px; background: #e2e8f0; border-radius: 4px; overflow: hidden; }
+        .skill-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, #0d9488, #7c3aed); }
+
+        /* ── Tags ── */
+        .tag-row { display: flex; flex-wrap: wrap; gap: 5px; }
+        .cv-tag {
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            padding: 2px 9px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            color: #475569;
+            font-weight: 600;
+        }
+
+        /* ── Stats Row ── */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .stat-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 11px 8px;
+            text-align: center;
+        }
+        .stat-num { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 800; color: #0d9488; }
+        .stat-lbl { font-size: 0.65rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600; }
+
+        /* ── Print Button ── */
+        .print-btn {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            background: #0d9488;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 30px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(13,148,136,0.35);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            z-index: 100;
+        }
+        .print-btn:hover { background: #0f766e; transform: translateY(-2px); }
+
+        .print-tip {
+            position: fixed;
+            bottom: 90px;
+            right: 28px;
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-family: 'Space Grotesk', sans-serif;
+            max-width: 240px;
+            line-height: 1.5;
+            display: none;
+        }
+
+        @media print {
+            body { background: white; }
+            .page { margin: 0; box-shadow: none; padding: 0; border-radius: 0; }
+            .print-btn, .print-tip { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+<button class="print-btn" onclick="printCV()">
+    🖨️ Save as PDF
+</button>
+<div class="print-tip" id="printTip">
+    💡 Print dialog mein:<br>
+    ✅ <strong>"Headers and footers"</strong> uncheck karo<br>
+    ✅ Destination: <strong>Save as PDF</strong>
+</div>
+
+<script>
+function printCV() {
+    document.getElementById('printTip').style.display = 'block';
+    setTimeout(() => {
+        window.print();
+        setTimeout(() => {
+            document.getElementById('printTip').style.display = 'none';
+        }, 3000);
+    }, 600);
+}
+</script>
+
+<div class="page">
+
+    <!-- HEADER -->
+    <div class="cv-header">
+        <div>
+            <div class="cv-name">Alimam Ansari</div>
+            <div class="cv-title">M. Pharm Scholar · Pharmacology · Data Science · Healthcare AI</div>
+        </div>
+        <div class="cv-contacts">
+            <div>📧 alimamansari.info@gmail.com</div>
+            <div>🔗 <a href="https://www.linkedin.com/in/alimamansari">linkedin.com/in/alimamansari</a></div>
+            <div>🎓 <a href="https://scholar.google.com/citations?user=j1bu0HcAAAAJ">Google Scholar Profile</a></div>
+            <div>🔬 ORCID: 0009-0004-1911-7740</div>
+        </div>
+    </div>
+
+    <!-- QUICK STATS -->
+    <div class="stats-row">
+        <div class="stat-box"><div class="stat-num">1</div><div class="stat-lbl">Publication</div></div>
+        <div class="stat-box"><div class="stat-num">9+</div><div class="stat-lbl">Certifications</div></div>
+        <div class="stat-box"><div class="stat-num">3</div><div class="stat-lbl">Exams Cleared</div></div>
+        <div class="stat-box"><div class="stat-num">4.9</div><div class="stat-lbl">Impact Factor</div></div>
+    </div>
+
+    <!-- OBJECTIVE -->
+    <div class="cv-section">
+        <div class="cv-section-title">Career Objective</div>
+        <p style="font-size:0.82rem; color:#475569; line-height:1.7;">
+            Passionate M.Pharm Pharmacology scholar at Central University of Punjab, aiming to bridge pharmaceutical science with data analytics and healthcare AI. Committed to translating complex biomedical datasets into actionable clinical insights. Aspiring to contribute as a <strong>Data Scientist</strong> in the healthcare domain.
+        </p>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="cv-section">
+        <div class="cv-section-title">Education</div>
+        <div class="cv-entry">
+            <div>
+                <div class="cv-entry-title">Master of Pharmacy (M. Pharm) — Pharmacology</div>
+                <div class="cv-entry-sub">Central University of Punjab (CUPB), Bathinda</div>
+                <div class="cv-entry-desc">Focusing on neuro-pharmacological pathways, computational models, ion channel pharmacology, and systematic literature reviews.</div>
+            </div>
+            <div class="cv-entry-date">2024 – Present</div>
+        </div>
+        <div class="cv-entry">
+            <div>
+                <div class="cv-entry-title">Bachelor of Pharmacy (B. Pharm)</div>
+                <div class="cv-entry-sub">Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV), Bhopal</div>
+                <div class="cv-entry-desc">Graduated with honors. Comprehensive training in Biochemistry, Organic Chemistry, Advanced Pharmacology, Pharmacognosy, and Pharmaceutical Analysis.</div>
+            </div>
+            <div class="cv-entry-date">2020 – 2024</div>
+        </div>
+        <div class="cv-entry">
+            <div>
+                <div class="cv-entry-title">Intermediate (12th) — Science (PCB)</div>
+                <div class="cv-entry-sub">Bihar School Examination Board (BSEB)</div>
+            </div>
+            <div class="cv-entry-date">2020</div>
+        </div>
+        <div class="cv-entry">
+            <div>
+                <div class="cv-entry-title">Matriculation (10th)</div>
+                <div class="cv-entry-sub">Bihar School Examination Board (BSEB)</div>
+            </div>
+            <div class="cv-entry-date">2018</div>
+        </div>
+    </div>
+
+    <!-- PUBLICATIONS -->
+    <div class="cv-section">
+        <div class="cv-section-title">Publications</div>
+        <div class="pub-card">
+            <div class="pub-title">Modulation of ion channels as emerging therapeutic targets in the treatment of diabetic neuropathy</div>
+            <div class="pub-meta">
+                <span>EXCLI Journal</span> | Volume 25 | Pages 511–549 | April 22, 2026 |
+                Impact Factor: <span>4.9</span> | ISSN: 1611-2156 | DOI: 10.17179/excli2026-9383
+            </div>
+            <div class="pub-meta" style="margin-top:3px;">
+                Authors: <strong>Alimam Ansari</strong>, Tanya Gupta, Randhir Singh &nbsp;·&nbsp; Peer Reviewed
+            </div>
+        </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="cv-section">
+        <div class="cv-section-title">Technical Skills</div>
+        <div class="skills-grid">
+            <div>
+                <div class="skill-group-title">Programming & Analytics</div>
+                <div class="skill-bar-row">
+                    <div class="skill-bar-label"><span>Python (NumPy, Pandas)</span><span>80%</span></div>
+                    <div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div>
+                </div>
+                <div class="skill-bar-row">
+                    <div class="skill-bar-label"><span>Power BI</span><span>85%</span></div>
+                    <div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div>
+                </div>
+                <div class="skill-bar-row">
+                    <div class="skill-bar-label"><span>Advanced MS Excel</span><span>90%</span></div>
+                    <div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div>
+                </div>
+                <div class="skill-bar-row">
+                    <div class="skill-bar-label"><span>WordPress & CMS</span><span>75%</span></div>
+                    <div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div>
+                </div>
+            </div>
+            <div>
+                <div class="skill-group-title">Research & Scientific</div>
+                <div class="tag-row" style="margin-bottom:10px;">
+                    <span class="cv-tag">Pharmacology</span>
+                    <span class="cv-tag">Literature Review</span>
+                    <span class="cv-tag">Ion Channel Physiology</span>
+                    <span class="cv-tag">Clinical Data Analysis</span>
+                    <span class="cv-tag">Healthcare AI</span>
+                    <span class="cv-tag">H & E Staining</span>
+                    <span class="cv-tag">Scientific Writing</span>
+                </div>
+                <div class="skill-group-title">Tools & Applications</div>
+                <div class="tag-row">
+                    <span class="cv-tag">GraphPad Prism</span>
+                    <span class="cv-tag">EndNote</span>
+                    <span class="cv-tag">ERBA Analyser</span>
+                    <span class="cv-tag">MS Office Suite</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CERTIFICATIONS -->
+    <div class="cv-section">
+        <div class="cv-section-title">Certifications & Training</div>
+        <div class="cv-entry">
+            <div>
+                <div class="cv-entry-title">Pharma Data Science Bootcamp</div>
+                <div class="cv-entry-sub">Dr. PK Classes · ID: PK/DSB25/A0013</div>
+                <div class="cv-entry-desc">8 Weeks (25 Hrs) — Python, ML & AI in pharmaceutical context</div>
+            </div>
+            <div class="cv-entry-date">Jan 2026</div>
+        </div>
+        <div class="cv-entry">
+            <div>
+                <div class="cv-entry-title">Data Analytics Professional Internship</div>
+                <div class="cv-entry-sub">Prodigy InfoTech · ID: PIT/DEC24/04285</div>
+            </div>
+            <div class="cv-entry-date">Jan 2026</div>
+        </div>
+        <div class="cv-entry">
+            <div>
+                <div class="cv-entry-title">AI Medical Assistant Development</div>
+                <div class="cv-entry-sub">Personal Research Project (Ongoing)</div>
+                <div class="cv-entry-desc">Intelligent symptom analysis and prescription safety system</div>
+            </div>
+            <div class="cv-entry-date">2025 – Present</div>
+        </div>
+    </div>
+
+    <!-- ENTRANCE EXAMS -->
+    <div class="cv-section">
+        <div class="cv-section-title">Competitive Examinations Cleared</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px 20px;">
+            <div style="font-size:0.82rem; color:#475569;">✅ <strong>GPAT</strong> — 2023 &amp; 2024</div>
+            <div style="font-size:0.82rem; color:#475569;">✅ <strong>CUET-PG</strong> — 2024</div>
+            <div style="font-size:0.82rem; color:#475569;">✅ <strong>NIPER-JEE</strong> — 2024</div>
+        </div>
+    </div>
+
+    <!-- DECLARATION -->
+    <div style="margin-top:24px; border-top:1px solid #e2e8f0; padding-top:12px;">
+        <p style="font-size:0.73rem; color:#94a3b8; text-align:center;">
+            I hereby declare that all information provided above is true and correct to the best of my knowledge.
+            &nbsp;|&nbsp; <strong style="color:#0d9488;">Alimam Ansari</strong>
+        </p>
+    </div>
+
+</div>
+</body>
+</html>

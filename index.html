@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ═══ PRIMARY SEO ═══ -->
+    <title>Alimam Ansari | Pharmacology Scholar & Healthcare Data Scientist</title>
+    <meta name="description" content="Alimam Ansari — M.Pharm Pharmacology Scholar at Central University of Punjab. Published researcher (EXCLI Journal, IF 4.9), Data Analytics Specialist. Bridging pharmaceutical science with AI and data-driven healthcare innovation.">
+    <meta name="keywords" content="Alimam Ansari, Pharmacology, M.Pharm, Central University of Punjab, CUPB, Data Science, Healthcare AI, EXCLI Journal, Drug Discovery, Python, Power BI, Diabetic Neuropathy, Ion Channels, Pharmaceutical Research, GPAT, NIPER">
+    <meta name="author" content="Alimam Ansari">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0d9488">
+    <link rel="canonical" href="https://alimamansari.github.io/">
+
+    <!-- ═══ OPEN GRAPH — Facebook / WhatsApp / LinkedIn ═══ -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://alimamansari.github.io/">
+    <meta property="og:title" content="Alimam Ansari | Pharmacology Scholar & Healthcare Data Scientist">
+    <meta property="og:description" content="Published M.Pharm researcher at CUPB. EXCLI Journal publication (IF 4.9). Specializing in ion channel pharmacology, data analytics, and healthcare AI.">
+    <meta property="og:image" content="profile.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_IN">
+    <meta property="og:site_name" content="Alimam Ansari Portfolio">
+
+    <!-- ═══ TWITTER / X CARD ═══ -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@Alimamansari_">
+    <meta name="twitter:creator" content="@Alimamansari_">
+    <meta name="twitter:title" content="Alimam Ansari | Pharmacology Scholar & Healthcare Data Scientist">
+    <meta name="twitter:description" content="Published M.Pharm researcher at CUPB. EXCLI Journal (IF 4.9). Ion channel pharmacology, data analytics & healthcare AI.">
+    <meta name="twitter:image" content="profile.jpg">
+
+    <!-- ═══ STRUCTURED DATA — Google Rich Results ═══ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Alimam Ansari",
+        "jobTitle": "Postgraduate Pharmacology Scholar & Data Analytics Specialist",
+        "affiliation": {
+            "@type": "EducationalOrganization",
+            "name": "Central University of Punjab",
+            "url": "https://cup.edu.in"
+        },
+        "url": "https://alimamansari.github.io/",
+        "email": "alimamansari.info@gmail.com",
+        "sameAs": [
+            "https://www.linkedin.com/in/alimamansari",
+            "https://scholar.google.com/citations?user=j1bu0HcAAAAJ",
+            "https://orcid.org/0009-0004-1911-7740",
+            "https://x.com/Alimamansari_",
+            "https://www.instagram.com/ansalimam"
+        ],
+        "knowsAbout": ["Pharmacology", "Data Science", "Healthcare AI", "Ion Channel Biology", "Python", "Power BI"],
+        "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name": "Rajiv Gandhi Proudyogiki Vishwavidyalaya",
+            "url": "https://www.rgpv.ac.in"
+        }
+    }
+    </script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Custom CSS Styling -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Ambient Animated Mesh Background -->
+    <div class="mesh-bg">
+        <div class="mesh-circle circle-1"></div>
+        <div class="mesh-circle circle-2"></div>
+        <div class="mesh-circle circle-3"></div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" title="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Navigation Header -->
+    <header class="header" id="header">
+        <a href="#hero" class="logo">
+            <span class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+            Alimam Ansari
+        </a>
+        
+        <nav class="nav" id="nav-menu">
+            <a href="#hero" class="nav-link active">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#research" class="nav-link">Research</a>
+            <a href="#certifications" class="nav-link">Certifications</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#education" class="nav-link">Education</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <div style="display: flex; align-items: center; gap: 16px;">
+            <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle dark/light theme">
+                <i class="fa-solid fa-moon" id="theme-icon"></i>
+            </button>
+            
+            <button class="hamburger" id="hamburger-menu" aria-label="Toggle mobile navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section (Editorial Split Grid Layout) -->
+    <section class="hero-sec" id="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fa-solid fa-graduation-cap" style="color: var(--color-primary);"></i> Postgraduate Pharmacology Scholar
+            </div>
+            <h1 class="hero-title">Advancing Healthcare Through <span>Science & Data</span></h1>
+            
+            <div class="typewriter-wrapper">
+                <span class="typewriter-text" id="typewriter"></span>
+            </div>
+            
+            <p class="hero-desc">
+                Pharmacology postgraduate scholar at the Central University of Punjab. Passionate about translating complex pharmaceutical datasets into actionable insights.
+            </p>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+                <a href="#research" class="btn btn-primary">
+                    <i class="fa-solid fa-file-invoice"></i> View Research
+                </a>
+                <a href="#contact" class="btn btn-outline">
+                    <i class="fa-solid fa-envelope"></i> Let's Connect
+                </a>
+                <a href="cv.pdf" download="Alimam_Ansari_CV.pdf" class="btn btn-cv">
+                    <i class="fa-solid fa-download"></i> Download CV
+                </a>
+            </div>
+            
+
+        </div>
+
+        <!-- Right Column Overlapping Profile Portrait Image Frame -->
+        <div class="hero-graphic-container">
+            <div class="profile-image-frame">
+                <!-- Displays real photo if named profile.jpg is placed in same directory -->
+                <img src="profile.jpg" alt="Alimam Ansari" class="profile-img" onerror="this.style.display='none'; document.getElementById('profile-placeholder').style.display='flex';">
+                
+                <!-- Fallback elegant placeholder monogram in case profile.jpg is missing initially -->
+                <div class="profile-img-placeholder" id="profile-placeholder" style="display: none;">
+                    <i class="fa-solid fa-user-tie"></i>
+                    <span>Photo Placeholder</span>
+                    <small>Name your photo as "profile.jpg"</small>
+                </div>
+                
+                <div class="profile-frame-bg"></div>
+
+                <!-- Orbiting Social Icons Clinging directly to Profile Frame -->
+                <div class="orbiting-socials">
+                    <div class="orbit-slot scholar-slot">
+                        <a href="https://scholar.google.com/citations?user=j1bu0HcAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="orbit-icon scholar" title="Google Scholar">
+                            <i class="fa-brands fa-google-scholar"></i>
+                        </a>
+                    </div>
+                    <div class="orbit-slot linkedin-slot">
+                        <a href="https://www.linkedin.com/in/alimamansari" target="_blank" rel="noopener noreferrer" class="orbit-icon linkedin" title="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                    <div class="orbit-slot orcid-slot">
+                        <a href="https://orcid.org/0009-0004-1911-7740" target="_blank" rel="noopener noreferrer" class="orbit-icon orcid" title="ORCID">
+                            <i class="fa-brands fa-orcid"></i>
+                        </a>
+                    </div>
+                    <div class="orbit-slot instagram-slot">
+                        <a href="https://www.instagram.com/ansalimam" target="_blank" rel="noopener noreferrer" class="orbit-icon instagram" title="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                    </div>
+                    <div class="orbit-slot x-slot">
+                        <a href="https://x.com/Alimamansari_" target="_blank" rel="noopener noreferrer" class="orbit-icon x" title="X (Twitter)">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <h2 class="section-title">About <span>Me</span></h2>
+        <div class="section-subtitle">Bridging the gap between Life Sciences and Technology</div>
+        
+        <div class="about-grid">
+            <div class="about-text">
+                <p>
+                    My name is <strong>Alimam Ansari</strong>. I am a passionate <strong>M.Pharm</strong> student at the <strong>Central University of Punjab</strong> with a consistent goal of merging pharmaceutical knowledge with data science. From qualifying <strong>GPAT (2023 & 2024)</strong>, <strong>CUET-PG (2024)</strong>, and <strong>NIPER-JEE (2024)</strong>, to diving into real-world AI projects – I strongly believe in learning with purpose and moving forward with persistence.
+                </p>
+                <p>
+                    With a strong foundation in pharmacy and a deep interest in technology, I am currently working on an <strong>AI Medical Assistant</strong> project. My journey from the <strong>Bihar School Examination Board (10th & 12th)</strong> to pursuing <strong>B.Pharm from RGPV Bhopal</strong>, and now <strong>M.Pharm</strong>, has been guided by curiosity and a desire to innovate.
+                </p>
+                <p>
+                    <strong>🎯 Career Vision:</strong> I want to become a <strong>Data Scientist</strong> in the healthcare domain, where I can bridge the gap between pharmaceutical science and emerging technologies. I envision building intelligent systems that improve patient outcomes, streamline prescription safety, and empower healthcare professionals.
+                </p>
+                
+                <!-- Animated Stats Counter Row -->
+                <div class="stats-counter-row">
+                    <div class="stat-counter-box glass-card">
+                        <div class="stat-number" data-target="1" data-suffix="">0</div>
+                        <div class="stat-label">Publication</div>
+                    </div>
+                    <div class="stat-counter-box glass-card">
+                        <div class="stat-number" data-target="9" data-suffix="+">0</div>
+                        <div class="stat-label">Certifications</div>
+                    </div>
+                    <div class="stat-counter-box glass-card">
+                        <div class="stat-number" data-target="3" data-suffix="">0</div>
+                        <div class="stat-label">Entrance Exams Cleared</div>
+                    </div>
+                    <div class="stat-counter-box glass-card">
+                        <div class="stat-number" data-target="4" data-suffix=".9">0</div>
+                        <div class="stat-label">Journal Impact Factor</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-features">
+                <div class="feature-item glass-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-dna"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Pharmacological Research</h4>
+                        <p>Specialized study in disease pathways, ion channels, neuro-endocrinology, and therapeutic drug mechanisms.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item glass-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-chart-column"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Data Analytics & Python</h4>
+                        <p>Transforming complex biological datasets into clear narratives using custom python workflows and interactive dashboard configurations.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item glass-card">
+                    <div class="feature-icon">
+                        <i class="fa-brands fa-wordpress"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Web & Automation</h4>
+                        <p>Constructing clean, mobile-responsive websites and automating clinical documentation workflows using modern tech stacks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Spotlight Section -->
+    <section class="section" id="research">
+        <h2 class="section-title">Research & <span>Publications</span></h2>
+        <div class="section-subtitle">Academic research contributions in high-impact medical journals</div>
+        
+        <div class="research-container">
+            <div class="publication-card glass-card">
+                <span class="publication-badge">Peer Reviewed</span>
+                <div class="publication-journal">EXCLI Journal | Volume 25 | Pages 511-549</div>
+                <h3 class="publication-title">
+                    Modulation of ion channels as emerging therapeutic targets in the treatment of diabetic neuropathy
+                </h3>
+                
+                <div class="publication-meta">
+                    <span><i class="fa-regular fa-calendar"></i> Published: <strong>April 22, 2026</strong></span>
+                    <span><i class="fa-solid fa-building-columns"></i> <strong>Central University of Punjab</strong></span>
+                    <span><i class="fa-solid fa-chart-line"></i> Impact Factor: <strong>4.9</strong> (2024)</span>
+                    <span><i class="fa-solid fa-barcode"></i> ISSN: <strong>1611-2156</strong></span>
+                </div>
+                
+                <div class="publication-authors">
+                    <strong class="authors-label">Authors:</strong> <strong>Alimam Ansari</strong>, Tanya Gupta, and Randhir Singh.
+                </div>
+                
+                <!-- Abstract Drawer -->
+                <div class="abstract-drawer">
+                    <button class="abstract-toggle-btn" id="abstract-toggle">
+                        <i class="fa-solid fa-chevron-down"></i> View Full Paper Abstract
+                    </button>
+                    
+                    <div class="abstract-content" id="abstract-drawer-content">
+                        <div class="abstract-text-block">
+                            <div class="abstract-title">Abstract Summary:</div>
+                            <p>
+                                Diabetic neuropathy (DN) represents a major long-term microvascular complication of diabetes mellitus, resulting in chronic neuropathic pain, sensory impairments, and patient discomfort. This comprehensive review examines the vital role of key ion channel families in sensory hyperexcitability and disease pathology. Specifically, voltage-gated sodium (Na<sub>v</sub>), calcium (Ca<sub>v</sub>), and potassium (K<sub>v</sub>) channel dysregulation, alongside TRP, P2X/P2Y, and PIEZO channels are investigated under conditions of sustained hyperglycemia and chronic oxidative stress.
+                            </p>
+                            <p>
+                                Modern pharmacology is witnessing a pivotal transition from single-channel pharmaceutical blockades to synergistically optimized multi-target therapies (such as co-administering KCNQ activators with Na<sub>v</sub> inhibitors). The paper evaluates these clinical strategies alongside next-generation nanocarrier delivery methodologies and gene modulation techniques, offering a definitive therapeutic roadmap while highlighting persistent challenges in channel-selectivity and bio-distribution.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="publication-actions">
+                    <a href="https://doi.org/10.17179/excli2026-9383" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Open via DOI Link
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=j1bu0HcAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                        <i class="fa-brands fa-google-scholar"></i> Google Scholar Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Showcase Section -->
+    <section class="section" id="certifications">
+        <h2 class="section-title">Certifications & <span>Training</span></h2>
+        <div class="section-subtitle">Click on any card to view verified credential verification details</div>
+        
+        <h3 class="subsection-title"><i class="fa-solid fa-certificate" style="color: var(--color-primary);"></i> Professional Certifications</h3>
+        <div class="certifications-grid">
+            <!-- Cert 1 -->
+            <div class="cert-card glass-card" data-cert-index="1">
+                <div class="cert-header">
+                    <div class="cert-provider pharma">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <span class="cert-date">January 2026</span>
+                </div>
+                <h3 class="cert-title">Pharma Data Science Bootcamp</h3>
+                <div class="cert-meta">
+                    <p>Issuer: <span>Dr. PK Classes</span></p>
+                    <p>Credential ID: <span>PK/DSB25/A0013</span></p>
+                </div>
+                <div class="cert-footer">
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">8 Weeks (25 Hrs) | Python, ML & AI</span>
+                    <span class="cert-link">View Details <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </div>
+            
+            <!-- Cert 2 -->
+            <div class="cert-card glass-card" data-cert-index="2">
+                <div class="cert-header">
+                    <div class="cert-provider tech">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+                    <span class="cert-date">January 2026</span>
+                </div>
+                <h3 class="cert-title">Data Analytics Professional Internship</h3>
+                <div class="cert-meta">
+                    <p>Issuer: <span>Pantech Prolabs India</span></p>
+                    <p>CIN NO: <span>702687</span></p>
+                </div>
+                <div class="cert-footer">
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">30 Days Industrial Practical Training</span>
+                    <span class="cert-link">View Details <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </div>
+            
+            <!-- Cert 3 -->
+            <div class="cert-card glass-card" data-cert-index="3">
+                <div class="cert-header">
+                    <div class="cert-provider tech">
+                        <i class="fa-brands fa-python"></i>
+                    </div>
+                    <span class="cert-date">November 2025</span>
+                </div>
+                <h3 class="cert-title">Master Data Analysis with Python</h3>
+                <div class="cert-meta">
+                    <p>Issuer: <span>Udemy (Learnify IT)</span></p>
+                    <p>Verification Code: <span>UC-aee8d304-d2f2-45dc-a745-d93f0f590db9</span></p>
+                </div>
+                <div class="cert-footer">
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">From Beginner to Pro Bootcamp</span>
+                    <span class="cert-link">View Details <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </div>
+            
+            <!-- Cert 4 -->
+            <div class="cert-card glass-card" data-cert-index="4">
+                <div class="cert-header">
+                    <div class="cert-provider pharma">
+                        <i class="fa-solid fa-pills"></i>
+                    </div>
+                    <span class="cert-date">February 2026</span>
+                </div>
+                <h3 class="cert-title">Pharmacology Diploma (UK): Prescribing</h3>
+                <div class="cert-meta">
+                    <p>Issuer: <span>Udemy (London HeartbeatsZ Academy)</span></p>
+                    <p>Verification Code: <span>UC-4f64573a-cd5e-45b9-9145-d01f6c75d00e</span></p>
+                </div>
+                <div class="cert-footer">
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">Mechanism & Drug Effect Diploma</span>
+                    <span class="cert-link">View Details <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </div>
+            
+            <!-- Cert 5 -->
+            <div class="cert-card glass-card" data-cert-index="5">
+                <div class="cert-header">
+                    <div class="cert-provider tech">
+                        <i class="fa-brands fa-wordpress-simple"></i>
+                    </div>
+                    <span class="cert-date">February 2026</span>
+                </div>
+                <h3 class="cert-title">WordPress Website Development Course</h3>
+                <div class="cert-meta">
+                    <p>Issuer: <span>Udemy (Anton Voroniuk)</span></p>
+                    <p>Verification Code: <span>UC-506d9bae-691f-4e7e-a263-a3d7e84d05aa</span></p>
+                </div>
+                <div class="cert-footer">
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">Hostinger Integration Setup</span>
+                    <span class="cert-link">View Details <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </div>
+
+            <!-- Cert 6 -->
+            <div class="cert-card glass-card" data-cert-index="6">
+                <div class="cert-header">
+                    <div class="cert-provider tech">
+                        <i class="fa-solid fa-file-excel"></i>
+                    </div>
+                    <span class="cert-date">May 2025</span>
+                </div>
+                <h3 class="cert-title">Advanced Excel Bootcamp: Pharma Consulting</h3>
+                <div class="cert-meta">
+                    <p>Issuer: <span>Dr. PK Classes</span></p>
+                    <p>Certificate ID: <span>PK/ExB25/A042</span></p>
+                </div>
+                <div class="cert-footer">
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">10 Weeks | Instructed by Aditya Jindal</span>
+                    <span class="cert-link">View Details <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </div>
+
+            <!-- Cert 7 -->
+            <div class="cert-card glass-card" data-cert-index="7">
+                <div class="cert-header">
+                    <div class="cert-provider pharma">
+                        <i class="fa-solid fa-clipboard-check"></i>
+                    </div>
+                    <span class="cert-date">September 2023</span>
+                </div>
+                <h3 class="cert-title">Good Clinical Practice (GCP)</h3>
+                <div class="cert-meta">
+                    <p>Issuer: <span>NIDA Clinical Trials Network</span></p>
+                    <p>CTN Expiry: <span>Sept 16, 2026</span></p>
+                </div>
+                <div class="cert-footer">
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">6-Hour Regulatory Practice Course</span>
+                    <span class="cert-link">View Details <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </div>
+
+            <!-- Cert 8 -->
+            <div class="cert-card glass-card" data-cert-index="8">
+                <div class="cert-header">
+                    <div class="cert-provider pharma">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <span class="cert-date">April 2025</span>
+                </div>
+                <h3 class="cert-title">Introduction to Pharmacovigilance</h3>
+                <div class="cert-meta">
+                    <p>Issuer: <span>PharmUni (Zamann Pharma)</span></p>
+                    <p>Certificate ID: <span>662499476585</span></p>
+                </div>
+                <div class="cert-footer">
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">ISO 9001:2015 Safety Standards</span>
+                    <span class="cert-link">View Details <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </div>
+
+            <!-- Cert 9 -->
+            <div class="cert-card glass-card" data-cert-index="9">
+                <div class="cert-header">
+                    <div class="cert-provider">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <span class="cert-date">August 2025</span>
+                </div>
+                <h3 class="cert-title">IPR & Innovation for Entrepreneurs</h3>
+                <div class="cert-meta">
+                    <p>Issuer: <span>Central University of Punjab</span></p>
+                    <p>Ref No: <span>CUPB/IPMCC/2025/SEM02/15</span></p>
+                </div>
+                <div class="cert-footer">
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">IPR Management Cell (IPMCC) Seminar</span>
+                    <span class="cert-link">View Details <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="subsection-title" style="margin-top: 50px;"><i class="fa-solid fa-trophy" style="color: var(--color-accent);"></i> Academic Honors & Awards</h3>
+        <div class="certifications-grid">
+            <!-- Award 10 -->
+            <div class="cert-card glass-card" data-cert-index="10">
+                <div class="cert-header">
+                    <div class="cert-provider pharma">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <span class="cert-date">September 2024</span>
+                </div>
+                <h3 class="cert-title">Third Prize: Poster Presentation Award</h3>
+                <div class="cert-meta">
+                    <p>Issuer: <span>Central University of Punjab</span></p>
+                    <p>Honors: <span>World Pharmacists Day 2024</span></p>
+                </div>
+                <div class="cert-footer">
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">Rational Medicine Use & Patient Care</span>
+                    <span class="cert-link">View Details <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </div>
+
+            <!-- Award 11 -->
+            <div class="cert-card glass-card" data-cert-index="11">
+                <div class="cert-header">
+                    <div class="cert-provider">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <span class="cert-date">2023 - 2024</span>
+                </div>
+                <h3 class="cert-title">GPAT Academic Excellence Trophy</h3>
+                <div class="cert-meta">
+                    <p>Issuer: <span>GPAT Discussion Center</span></p>
+                    <p>Inspiration: <span>"Hard work pays off" Trophy</span></p>
+                </div>
+                <div class="cert-footer">
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">Academic Dedication & Qualification</span>
+                    <span class="cert-link">View Details <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certification Modal Overlay -->
+    <div class="modal-overlay" id="cert-modal">
+        <div class="modal-card">
+            <button class="modal-close-btn" id="modal-close" aria-label="Close modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-icon-wrap" id="modal-icon">
+                <i class="fa-solid fa-certificate"></i>
+            </div>
+            <h3 class="modal-title" id="modal-title">Certificate Title</h3>
+            <div class="modal-issuer" id="modal-issuer">Issuer Name</div>
+            
+            <div class="modal-details">
+                <p><strong>Issued On:</strong> <span id="modal-date">Date</span></p>
+                <p><strong>Credential Code:</strong> <span id="modal-cred">Verification Code</span></p>
+                <p><strong>Curriculum Scope:</strong> <span id="modal-scope">Scope details</span></p>
+            </div>
+            
+            <button class="btn btn-primary" id="modal-action-btn" style="width: 100%; justify-content: center;">
+                <i class="fa-solid fa-circle-check"></i> Close Credentials Inspection
+            </button>
+        </div>
+    </div>
+
+    <!-- Skills Showcase Section -->
+    <section class="section" id="skills">
+        <h2 class="section-title">Technical <span>Expertise</span></h2>
+        <div class="section-subtitle">My core skills grouped into specific fields of pharmaceutical data tech</div>
+        
+        <div class="skills-container">
+
+            <!-- Column 1: Technical & Programming -->
+            <div class="skills-column glass-card">
+                <h3><i class="fa-solid fa-code"></i> Technical &amp; Programming</h3>
+                <div class="skill-list">
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Python (Data Analytics, NumPy, Pandas)</span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Power BI (Data Modeling &amp; Dashboards)</span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Advanced Microsoft Excel (VLOOKUP, Pivots)</span>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">WordPress Development &amp; CMS</span>
+                            <span class="skill-percentage">75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="75%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 2: Scientific & Research -->
+            <div class="skills-column glass-card">
+                <h3><i class="fa-solid fa-graduation-cap"></i> Scientific &amp; Research</h3>
+                <div class="tag-cloud">
+                    <span class="tag-item">Pharmacology</span>
+                    <span class="tag-item">Literature Review</span>
+                    <span class="tag-item">Diabetic Neuropathy</span>
+                    <span class="tag-item">Ion Channel Physiology</span>
+                    <span class="tag-item">Technical Scientific Writing</span>
+                    <span class="tag-item">Clinical Data Analysis</span>
+                    <span class="tag-item">Healthcare AI Models</span>
+                    <span class="tag-item">H &amp; E Staining</span>
+                </div>
+            </div>
+
+            <!-- Column 3: Applications & Tools -->
+            <div class="skills-column glass-card">
+                <h3><i class="fa-solid fa-screwdriver-wrench"></i> Applications &amp; Tools</h3>
+                <div class="tag-cloud">
+                    <span class="tag-item">Microsoft Excel</span>
+                    <span class="tag-item">WordPress Admin Panel</span>
+                    <span class="tag-item">EndNote</span>
+                    <span class="tag-item">GraphPad Prism</span>
+                    <span class="tag-item">Semi-Automatic Biochemical Analyser (ERBA)</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Education Timeline Section -->
+    <section class="section" id="education">
+        <h2 class="section-title">Academic <span>Chronicle</span></h2>
+        <div class="section-subtitle">My postgraduate research journey and educational milestones</div>
+        
+        <div class="editorial-timeline">
+            <!-- Timeline Item 1 -->
+            <div class="edit-timeline-item">
+                <div class="edit-timeline-year">
+                    <span class="year-badge cup-year">2024 - Present</span>
+                </div>
+                <div class="edit-timeline-tracker">
+                    <div class="edit-timeline-dot cup-dot"></div>
+                </div>
+                <div class="edit-timeline-details">
+                    <span class="timeline-watermark">CUPB</span>
+                    <h3 class="degree-title">Master of Pharmacy (M. Pharm)</h3>
+                    <h4 class="school-name cup-name"><i class="fa-solid fa-building-columns"></i> Central University of Punjab</h4>
+                    <p class="degree-desc">
+                        Postgraduate scholar focusing deeply on Pharmacology, neuro-pharmacological pathways, computational models, and literature reviews. Investigating the potential of therapeutic modulation in voltage-gated ion channels.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Timeline Item 2 -->
+            <div class="edit-timeline-item">
+                <div class="edit-timeline-year">
+                    <span class="year-badge rgpv-year">2020 - 2024</span>
+                </div>
+                <div class="edit-timeline-tracker">
+                    <div class="edit-timeline-dot rgpv-dot"></div>
+                </div>
+                <div class="edit-timeline-details">
+                    <span class="timeline-watermark">RGPV</span>
+                    <h3 class="degree-title">Bachelor of Pharmacy (B. Pharm)</h3>
+                    <h4 class="school-name rgpv-name"><i class="fa-solid fa-graduation-cap"></i> Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV), Bhopal</h4>
+                    <p class="degree-desc">
+                        Graduated with honors from a prestigious technological university. Completed comprehensive undergraduate training in core domains including Biochemistry, Organic/Medicinal Chemistry, Advanced Pharmacology, Pharmacognosy, and Pharmaceutical Analysis. Accomplished hands-on laboratory research and industrial training.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Timeline Item 3 -->
+            <div class="edit-timeline-item">
+                <div class="edit-timeline-year">
+                    <span class="year-badge bseb-year">2017 - 2019</span>
+                </div>
+                <div class="edit-timeline-tracker">
+                    <div class="edit-timeline-dot bseb-dot"></div>
+                </div>
+                <div class="edit-timeline-details">
+                    <span class="timeline-watermark">BSEB</span>
+                    <h3 class="degree-title">Higher Secondary School / 12th (Intermediate of Science)</h3>
+                    <h4 class="school-name bseb-name"><i class="fa-solid fa-school"></i> Bihar School Examination Board (BSEB)</h4>
+                    <p class="degree-desc">
+                        Pursued secondary schooling focused on physical and life sciences (Physics, Chemistry, Biology, and Mathematics). Graduated with high distinction, establishing a solid scientific base for undergraduate pharmaceutical studies.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Timeline Item 4 -->
+            <div class="edit-timeline-item">
+                <div class="edit-timeline-year">
+                    <span class="year-badge bseb-year">2017</span>
+                </div>
+                <div class="edit-timeline-tracker">
+                    <div class="edit-timeline-dot bseb-dot"></div>
+                </div>
+                <div class="edit-timeline-details">
+                    <span class="timeline-watermark">BSEB</span>
+                    <h3 class="degree-title">Secondary School / 10th (Matriculation)</h3>
+                    <h4 class="school-name bseb-name"><i class="fa-solid fa-graduation-cap"></i> Bihar School Examination Board (BSEB)</h4>
+                    <p class="degree-desc">
+                        Completed secondary education with high distinction, scoring strong credentials in mathematics, general science, and languages.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <h2 class="section-title">Get In <span>Touch</span></h2>
+        <div class="section-subtitle">Feel free to reach out for research collaborations, project inquiries, or professional networking</div>
+        
+        <div class="contact-grid">
+            <!-- Social Connect Cards Grid -->
+            <div class="social-cards-wrap">
+                <p class="social-connect-label"><i class="fa-solid fa-satellite-dish"></i> Connect With Me</p>
+                <div class="social-cards-grid">
+
+                    <!-- Email -->
+                    <a href="mailto:alimamansari.info@gmail.com" class="social-card email-card glass-card">
+                        <div class="social-card-icon">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <span class="social-card-name">Email</span>
+                        <span class="social-card-arrow"><i class="fa-solid fa-arrow-up-right"></i></span>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/alimamansari" target="_blank" rel="noopener noreferrer" class="social-card linkedin-card glass-card">
+                        <div class="social-card-icon">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </div>
+                        <span class="social-card-name">LinkedIn</span>
+                        <span class="social-card-arrow"><i class="fa-solid fa-arrow-up-right"></i></span>
+                    </a>
+
+                    <!-- Google Scholar -->
+                    <a href="https://scholar.google.com/citations?user=j1bu0HcAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="social-card scholar-card glass-card">
+                        <div class="social-card-icon">
+                            <i class="fa-brands fa-google-scholar"></i>
+                        </div>
+                        <span class="social-card-name">Google Scholar</span>
+                        <span class="social-card-arrow"><i class="fa-solid fa-arrow-up-right"></i></span>
+                    </a>
+
+                    <!-- ORCID -->
+                    <a href="https://orcid.org/0009-0004-1911-7740" target="_blank" rel="noopener noreferrer" class="social-card orcid-card glass-card">
+                        <div class="social-card-icon">
+                            <i class="fa-brands fa-orcid"></i>
+                        </div>
+                        <span class="social-card-name">ORCID</span>
+                        <span class="social-card-arrow"><i class="fa-solid fa-arrow-up-right"></i></span>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/ansalimam" target="_blank" rel="noopener noreferrer" class="social-card insta-card glass-card">
+                        <div class="social-card-icon">
+                            <i class="fa-brands fa-instagram"></i>
+                        </div>
+                        <span class="social-card-name">Instagram</span>
+                        <span class="social-card-arrow"><i class="fa-solid fa-arrow-up-right"></i></span>
+                    </a>
+
+                    <!-- X (Twitter) -->
+                    <a href="https://x.com/Alimamansari_" target="_blank" rel="noopener noreferrer" class="social-card x-card glass-card">
+                        <div class="social-card-icon">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </div>
+                        <span class="social-card-name">X (Twitter)</span>
+                        <span class="social-card-arrow"><i class="fa-solid fa-arrow-up-right"></i></span>
+                    </a>
+
+                </div>
+            </div>
+            
+            <!-- Dynamic Contact Form (Web3Forms Powered) -->
+            <form class="contact-form glass-card" id="contact-form">
+                <!-- Web3Forms Access Key -->
+                <input type="hidden" name="access_key" value="5818d0e4-f5fb-4b99-9d34-7fdce86345dc">
+                <input type="hidden" name="subject" value="New Portfolio Message — Alimam Ansari">
+                <input type="hidden" name="from_name" value="Portfolio Contact Form">
+                <input type="checkbox" name="botcheck" style="display:none;">
+
+                <div class="form-group">
+                    <label for="name" class="form-label">Full Name</label>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message" class="form-label">Your Message</label>
+                    <textarea id="message" name="message" rows="5" class="form-control" placeholder="Write your message here..." required></textarea>
+                </div>
+
+                <!-- Success / Error Alert -->
+                <div id="form-alert" class="form-alert" style="display:none;"></div>
+                
+                <button type="submit" class="btn btn-primary" id="submit-btn" style="width: 100%; justify-content: center;">
+                    <i class="fa-solid fa-paper-plane" id="submit-icon"></i>
+                    <span id="submit-text">Send Message</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-top-row">
+            <!-- Social Icons — Left -->
+            <div class="footer-socials">
+                <a href="https://scholar.google.com/citations?user=j1bu0HcAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="social-icon scholar" title="Google Scholar">
+                    <i class="fa-brands fa-google-scholar"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/alimamansari" target="_blank" rel="noopener noreferrer" class="social-icon linkedin" title="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="https://orcid.org/0009-0004-1911-7740" target="_blank" rel="noopener noreferrer" class="social-icon orcid" title="ORCID">
+                    <i class="fa-brands fa-orcid"></i>
+                </a>
+                <a href="https://www.instagram.com/ansalimam" target="_blank" rel="noopener noreferrer" class="social-icon instagram" title="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://x.com/Alimamansari_" target="_blank" rel="noopener noreferrer" class="social-icon x" title="X (Twitter)">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+            </div>
+
+            <!-- Center Branding -->
+            <a href="#hero" class="footer-brand">
+                <span class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+                <span class="footer-brand-name">Alimam Ansari</span>
+            </a>
+
+            <!-- Legal Links — Right -->
+            <div class="footer-legal-links">
+                <button class="legal-link-btn" id="btn-disclaimer">Disclaimer</button>
+                <span class="footer-legal-divider">|</span>
+                <button class="legal-link-btn" id="btn-privacy">Privacy Policy</button>
+                <span class="footer-legal-divider">|</span>
+                <button class="legal-link-btn" id="btn-terms">Terms &amp; Conditions</button>
+            </div>
+        </div>
+
+        <p class="footer-copy">&copy; 2026 Alimam Ansari. All Rights Reserved.</p>
+    </footer>
+
+
+    <!-- ===== LEGAL MODALS ===== -->
+
+    <!-- Disclaimer Modal -->
+    <div class="legal-modal-overlay" id="modal-disclaimer">
+        <div class="legal-modal-box">
+            <button class="legal-modal-close" data-close="modal-disclaimer"><i class="fa-solid fa-xmark"></i></button>
+            <div class="legal-modal-header">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <h2>Disclaimer</h2>
+                <p class="legal-modal-date">Last Updated: May 2026</p>
+            </div>
+            <div class="legal-modal-body">
+                <h3>General Information</h3>
+                <p>The information provided on this personal academic portfolio website (<strong>alimamansari.portfolio</strong>) is for general informational and academic purposes only. All content is presented in good faith; however, no representation or warranty of any kind, express or implied, is made regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information.</p>
+
+                <h3>Academic & Research Content</h3>
+                <p>Research articles, review papers, and academic content published on this website reflect the personal views and scholarly work of the author at the time of writing. They do not constitute medical advice, clinical recommendations, or professional guidance. Readers should not substitute any content herein for professional medical, pharmaceutical, or healthcare advice.</p>
+
+                <h3>External Links</h3>
+                <p>This website may contain links to external websites (e.g., Google Scholar, ORCID, LinkedIn, Instagram). These links are provided for convenience only. The author has no control over the content or availability of external sites and does not endorse or accept responsibility for their content.</p>
+
+                <h3>Intellectual Property</h3>
+                <p>All original content, designs, and materials on this website are the intellectual property of Alimam Ansari unless otherwise stated. Any published research is subject to the respective journal's copyright terms (e.g., EXCLI Journal – CC BY 4.0 License).</p>
+
+                <h3>Limitation of Liability</h3>
+                <p>Under no circumstances shall Alimam Ansari be liable for any direct, indirect, incidental, consequential, or punitive damages arising out of your access to or use of this website, in accordance with the provisions of the <strong>Information Technology Act, 2000</strong> (India) and its amendments.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div class="legal-modal-overlay" id="modal-privacy">
+        <div class="legal-modal-box">
+            <button class="legal-modal-close" data-close="modal-privacy"><i class="fa-solid fa-xmark"></i></button>
+            <div class="legal-modal-header">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h2>Privacy Policy</h2>
+                <p class="legal-modal-date">Last Updated: May 2026</p>
+            </div>
+            <div class="legal-modal-body">
+                <h3>1. Introduction</h3>
+                <p>This Privacy Policy describes how Alimam Ansari ("Owner", "I", "Me") collects, uses, and protects any personal information submitted by users of this portfolio website, in compliance with the <strong>Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011</strong> under the IT Act, 2000 (India).</p>
+
+                <h3>2. Information We Collect</h3>
+                <p>When you use the contact form on this website, the following information may be collected:</p>
+                <ul>
+                    <li>Full Name</li>
+                    <li>Email Address</li>
+                    <li>Message Content</li>
+                </ul>
+                <p>No sensitive personal data (financial details, passwords, health data) is collected through this website.</p>
+
+                <h3>3. How We Use Your Information</h3>
+                <p>Information submitted via the contact form is used solely to respond to your queries or collaboration requests. Your data is <strong>never sold, rented, or shared</strong> with any third parties for commercial purposes.</p>
+
+                <h3>4. Third-Party Services</h3>
+                <p>This website uses <strong>Web3Forms</strong> (web3forms.com) to process contact form submissions. Web3Forms processes your submitted data to deliver it to the site owner's email. Please refer to Web3Forms' privacy policy for details on their data handling practices.</p>
+
+                <h3>5. Cookies</h3>
+                <p>This website does not use tracking cookies or any third-party analytics tools. The only stored data is your theme preference (light/dark mode) saved locally in your browser's localStorage — no personal data is involved.</p>
+
+                <h3>6. Data Retention</h3>
+                <p>Contact form submissions are retained only as long as necessary to respond to your inquiry and are not stored in any database by this website directly.</p>
+
+                <h3>7. Your Rights</h3>
+                <p>As per applicable Indian law, you have the right to access, correct, or withdraw any personal data submitted to this website. For any such requests, contact: <strong>alimamansari.info@gmail.com</strong></p>
+
+                <h3>8. Security</h3>
+                <p>Reasonable technical measures are employed to protect information transmitted via this website. However, no method of internet transmission is 100% secure.</p>
+
+                <h3>9. Changes to This Policy</h3>
+                <p>This Privacy Policy may be updated periodically. Continued use of the website constitutes acceptance of the revised policy.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms & Conditions Modal -->
+    <div class="legal-modal-overlay" id="modal-terms">
+        <div class="legal-modal-box">
+            <button class="legal-modal-close" data-close="modal-terms"><i class="fa-solid fa-file-contract"></i></button>
+            <div class="legal-modal-header">
+                <i class="fa-solid fa-file-contract"></i>
+                <h2>Terms &amp; Conditions</h2>
+                <p class="legal-modal-date">Last Updated: May 2026</p>
+            </div>
+            <div class="legal-modal-body">
+                <h3>1. Acceptance of Terms</h3>
+                <p>By accessing and using this personal academic portfolio website, you accept and agree to be bound by these Terms and Conditions. If you do not agree, please discontinue use of this website immediately.</p>
+
+                <h3>2. Intellectual Property Rights</h3>
+                <p>All content on this website — including but not limited to text, graphics, design, layout, and code — is the exclusive intellectual property of <strong>Alimam Ansari</strong>, protected under the <strong>Copyright Act, 1957 (India)</strong> and applicable international copyright laws. Unauthorized reproduction, distribution, or commercial use of any content is strictly prohibited.</p>
+
+                <h3>3. Permitted Use</h3>
+                <p>You may:</p>
+                <ul>
+                    <li>View and browse the website for personal, educational, or research purposes.</li>
+                    <li>Share links to the website with proper attribution.</li>
+                    <li>Reference published research with proper citation as per journal licensing (CC BY 4.0).</li>
+                </ul>
+                <p>You may <strong>not</strong>:</p>
+                <ul>
+                    <li>Copy, reproduce, or distribute website content without prior written permission.</li>
+                    <li>Use any content for commercial purposes without authorization.</li>
+                    <li>Misrepresent the author's work or identity.</li>
+                </ul>
+
+                <h3>4. User Conduct</h3>
+                <p>You agree not to use this website to transmit any unlawful, harmful, threatening, abusive, or defamatory content through the contact form. Any misuse will be reported to appropriate authorities under the IT Act, 2000.</p>
+
+                <h3>5. Research & Academic Content</h3>
+                <p>Published research papers linked from this website are subject to the respective journal's copyright and licensing terms. The EXCLI Journal publication is licensed under <strong>Creative Commons Attribution 4.0 International (CC BY 4.0)</strong>, permitting sharing and adaptation with proper attribution.</p>
+
+                <h3>6. Governing Law & Jurisdiction</h3>
+                <p>These Terms shall be governed by and construed in accordance with the laws of <strong>India</strong>. Any disputes arising from use of this website shall be subject to the exclusive jurisdiction of the courts of India, in compliance with the <strong>Information Technology Act, 2000</strong> and associated rules.</p>
+
+                <h3>7. Modifications</h3>
+                <p>The Owner reserves the right to modify these Terms at any time without prior notice. Continued use of the website after any changes constitutes your acceptance of the new Terms.</p>
+
+                <h3>8. Contact</h3>
+                <p>For any legal inquiries or notices, please contact: <strong>alimamansari.info@gmail.com</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive script file -->
+    <script src="script.js"></script>
+</body>
+</html>
