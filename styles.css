@@ -2610,3 +2610,112 @@ textarea.form-control {
 .fade-in-section:nth-child(5) { transition-delay: 0.4s; }
 .fade-in-section:nth-child(6) { transition-delay: 0.5s; }
 
+
+/* ============================================================
+   CUSTOM CURSOR GLOW & MOUSE TRAIL SYSTEM
+   ============================================================ */
+@media (pointer: fine) {
+    /* Hide native cursor when custom cursor is active */
+    body.custom-cursor-active {
+        cursor: none;
+    }
+    
+    body.custom-cursor-active a,
+    body.custom-cursor-active button,
+    body.custom-cursor-active select,
+    body.custom-cursor-active input,
+    body.custom-cursor-active textarea,
+    body.custom-cursor-active [role="button"],
+    body.custom-cursor-active .clickable,
+    body.custom-cursor-active .social-card,
+    body.custom-cursor-active .cert-card,
+    body.custom-cursor-active .publication-card,
+    body.custom-cursor-active .stat-card,
+    body.custom-cursor-active .footer-brand,
+    body.custom-cursor-active .theme-toggle,
+    body.custom-cursor-active .back-to-top {
+        cursor: none !important;
+    }
+
+    /* Outer glowing trail */
+    .custom-cursor-glow {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 32px;
+        height: 32px;
+        border: 2px solid rgba(var(--color-primary-rgb), 0.4);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 999999;
+        transform: translate3d(-50%, -50%, 0);
+        transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+                    height 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+                    border-color 0.3s ease, 
+                    background-color 0.3s ease, 
+                    box-shadow 0.3s ease, 
+                    opacity 0.3s ease;
+        box-shadow: 0 0 15px rgba(var(--color-primary-rgb), 0.2);
+        opacity: 0;
+        will-change: transform, width, height;
+    }
+
+    /* Inner solid dot */
+    .custom-cursor-dot {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 8px;
+        height: 8px;
+        background-color: var(--color-primary);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 999999;
+        transform: translate3d(-50%, -50%, 0);
+        transition: width 0.2s ease, 
+                    height 0.2s ease, 
+                    background-color 0.3s ease,
+                    opacity 0.3s ease;
+        opacity: 0;
+        will-change: transform;
+    }
+
+    /* Show state when mouse moves inside viewport */
+    .custom-cursor-glow.active,
+    .custom-cursor-dot.active {
+        opacity: 1;
+    }
+
+    /* Hover State over interactive elements */
+    .custom-cursor-glow.hovered {
+        width: 60px;
+        height: 60px;
+        border-color: rgba(var(--color-secondary-rgb), 0.7);
+        background-color: rgba(var(--color-primary-rgb), 0.05);
+        box-shadow: 0 0 25px rgba(var(--color-secondary-rgb), 0.4), 
+                    inset 0 0 10px rgba(var(--color-primary-rgb), 0.1);
+    }
+
+    .custom-cursor-dot.hovered {
+        width: 14px;
+        height: 14px;
+        background-color: var(--color-secondary);
+        box-shadow: 0 0 8px rgba(var(--color-secondary-rgb), 0.6);
+    }
+    
+    /* Click State */
+    .custom-cursor-glow.clicked {
+        width: 24px;
+        height: 24px;
+        border-color: var(--color-accent);
+        background-color: rgba(var(--color-accent-rgb), 0.2);
+        box-shadow: 0 0 30px rgba(var(--color-accent-rgb), 0.6);
+    }
+
+    .custom-cursor-dot.clicked {
+        width: 4px;
+        height: 4px;
+        background-color: var(--color-accent);
+    }
+}
+

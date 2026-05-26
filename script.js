@@ -507,4 +507,89 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    /* --- Custom Cursor Glow & Mouse Trail --- */
+    if (window.matchMedia('(pointer: fine)').matches) {
+        // Create custom cursor elements dynamically
+        const glow = document.createElement('div');
+        glow.className = 'custom-cursor-glow';
+        const dot = document.createElement('div');
+        dot.className = 'custom-cursor-dot';
+        document.body.appendChild(glow);
+        document.body.appendChild(dot);
+
+        document.body.classList.add('custom-cursor-active');
+        
+        let mouseX = 0, mouseY = 0;
+        let glowX = 0, glowY = 0;
+        let isMouseActive = false;
+        
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            if (!isMouseActive) {
+                isMouseActive = true;
+                glow.classList.add('active');
+                dot.classList.add('active');
+            }
+            
+            // Move dot instantly for standard crisp responsiveness
+            dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+        });
+        
+        // Smooth trailing glow using LERP (Linear Interpolation) with high performance requestAnimationFrame
+        function updateGlow() {
+            if (isMouseActive) {
+                // Lerp formula: current = current + (target - current) * factor
+                glowX += (mouseX - glowX) * 0.12;
+                glowY += (mouseY - glowY) * 0.12;
+                
+                glow.style.transform = `translate3d(${glowX}px, ${glowY}px, 0) translate(-50%, -50%)`;
+            }
+            requestAnimationFrame(updateGlow);
+        }
+        requestAnimationFrame(updateGlow);
+        
+        // Hide when mouse leaves window, show when it returns
+        document.addEventListener('mouseleave', () => {
+            glow.classList.remove('active');
+            dot.classList.remove('active');
+            isMouseActive = false;
+        });
+        
+        document.addEventListener('mouseenter', () => {
+            glow.classList.add('active');
+            dot.classList.add('active');
+            isMouseActive = true;
+        });
+        
+        // Interactive element hover effects using event delegation (more performant)
+        const interactiveSelector = 'a, button, input[type="submit"], input[type="button"], select, textarea, [role="button"], .clickable, .social-card, .cert-card, .publication-card, .stat-card, .footer-brand, .theme-toggle, .back-to-top';
+        
+        document.addEventListener('mouseover', (e) => {
+            if (e.target.closest(interactiveSelector)) {
+                glow.classList.add('hovered');
+                dot.classList.add('hovered');
+            }
+        });
+        
+        document.addEventListener('mouseout', (e) => {
+            if (!e.target.closest(interactiveSelector) || (e.relatedTarget && !e.relatedTarget.closest(interactiveSelector))) {
+                glow.classList.remove('hovered');
+                dot.classList.remove('hovered');
+            }
+        });
+        
+        // Click visual impact
+        document.addEventListener('mousedown', () => {
+            glow.classList.add('clicked');
+            dot.classList.add('clicked');
+        });
+        
+        document.addEventListener('mouseup', () => {
+            glow.classList.remove('clicked');
+            dot.classList.remove('clicked');
+        });
+    }
+
 });
