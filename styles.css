@@ -2454,9 +2454,12 @@ textarea.form-control {
         justify-content: center;
     }
 
-    /* Hide graphic on small screens */
+    /* Show graphic on small screens and scale it down slightly */
     .hero-graphic-container {
-        display: none;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+        transform: scale(0.85);
     }
 
     /* About grid stacked */
