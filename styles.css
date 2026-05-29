@@ -1773,6 +1773,7 @@ a {
 .cup-name { color: var(--color-primary); }
 .rgpv-name { color: var(--color-secondary); }
 .bseb-name { color: var(--color-accent); }
+.bseb-name-10 { color: var(--color-primary); }
 
 .degree-desc {
     color: var(--text-secondary);
