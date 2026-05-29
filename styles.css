@@ -1786,17 +1786,21 @@ a {
     transform: scale(1.35);
 }
 
-.edit-timeline-item:hover .cup-dot {
+.cup-item:hover .edit-timeline-dot {
     background: var(--color-primary);
     box-shadow: 0 0 12px rgba(var(--color-primary-rgb), 0.35), 0 0 0 4px var(--bg-main);
 }
-.edit-timeline-item:hover .rgpv-dot {
+.rgpv-item:hover .edit-timeline-dot {
     background: var(--color-secondary);
     box-shadow: 0 0 12px rgba(var(--color-secondary-rgb), 0.35), 0 0 0 4px var(--bg-main);
 }
-.edit-timeline-item:hover .bseb-dot {
+.bseb-item:hover .edit-timeline-dot {
     background: var(--color-accent);
     box-shadow: 0 0 12px rgba(var(--color-accent-rgb), 0.35), 0 0 0 4px var(--bg-main);
+}
+.bseb-10-item:hover .edit-timeline-dot {
+    background: var(--color-primary);
+    box-shadow: 0 0 12px rgba(var(--color-primary-rgb), 0.35), 0 0 0 4px var(--bg-main);
 }
 
 .edit-timeline-item:hover .edit-timeline-details {
@@ -1811,14 +1815,17 @@ a {
     transform: scale(1.06);
 }
 
-.edit-timeline-item:hover .degree-title {
+.cup-item:hover .degree-title {
     color: var(--color-primary);
 }
-.edit-timeline-item:has(.rgpv-dot):hover .degree-title {
+.rgpv-item:hover .degree-title {
     color: var(--color-secondary);
 }
-.edit-timeline-item:has(.bseb-dot):hover .degree-title {
+.bseb-item:hover .degree-title {
     color: var(--color-accent);
+}
+.bseb-10-item:hover .degree-title {
+    color: var(--color-primary);
 }
 
 /* Responsive Editorial Adjustments */
