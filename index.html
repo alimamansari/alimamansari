@@ -65,7 +65,7 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <!-- Custom CSS Styling -->
-    <link rel="stylesheet" href="styles.css?v=1.0.3">
+    <link rel="stylesheet" href="styles.css?v=1.0.4">
 </head>
 <body>
 
@@ -148,14 +148,17 @@
         <!-- Right Column Overlapping Profile Portrait Image Frame -->
         <div class="hero-graphic-container">
             <div class="profile-image-frame">
-                <!-- Displays real photo if named profile.PNG is placed in same directory -->
-                <img src="profile.PNG" alt="Alimam Ansari" class="profile-img" onerror="this.style.display='none'; document.getElementById('profile-placeholder').style.display='flex';">
-                
-                <!-- Fallback elegant placeholder monogram in case profile.PNG is missing initially -->
-                <div class="profile-img-placeholder" id="profile-placeholder" style="display: none;">
-                    <i class="fa-solid fa-user-tie"></i>
-                    <span>Photo Placeholder</span>
-                    <small>Name your photo as "profile.PNG"</small>
+                <!-- Inner wrap to enable overflow: hidden and premium shine sweeps without clipping orbiting socials -->
+                <div class="profile-img-wrap">
+                    <!-- Displays real photo if named profile.PNG is placed in same directory -->
+                    <img src="profile.PNG" alt="Alimam Ansari" class="profile-img" onerror="this.style.display='none'; document.getElementById('profile-placeholder').style.display='flex';">
+                    
+                    <!-- Fallback elegant placeholder monogram in case profile.PNG is missing initially -->
+                    <div class="profile-img-placeholder" id="profile-placeholder" style="display: none;">
+                        <i class="fa-solid fa-user-tie"></i>
+                        <span>Photo Placeholder</span>
+                        <small>Name your photo as "profile.PNG"</small>
+                    </div>
                 </div>
                 
                 <div class="profile-frame-bg"></div>
@@ -1175,6 +1178,6 @@
     </div>
 
     <!-- Interactive script file -->
-    <script src="script.js?v=1.0.3"></script>
+    <script src="script.js?v=1.0.4"></script>
 </body>
 </html>

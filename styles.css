@@ -298,6 +298,32 @@ a {
     cursor: pointer;
     transition: all var(--transition-speed) var(--transition-curve);
     border: 1.5px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Premium shine sweep effect for buttons */
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.25) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    transition: left 0.75s ease;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.btn:hover::after {
+    left: 150%;
 }
 
 .btn-primary {
@@ -637,6 +663,40 @@ a {
     margin-top: -90px; /* Shifted up by 90px for perfect vertical centering in the viewport */
     animation: floatImage 6s infinite alternate ease-in-out;
     --orbit-radius: 174px; /* Symmetrical orbit distance centered at center of the frame */
+}
+
+.profile-img-wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 2;
+    box-shadow: var(--card-shadow);
+}
+
+/* Premium shine sweep effect for profile photo */
+.profile-img-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.22) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    transition: left 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 3;
+    pointer-events: none;
+}
+
+.profile-image-frame:hover .profile-img-wrap::after {
+    left: 150%;
 }
 
 .profile-img {
