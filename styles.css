@@ -2651,6 +2651,7 @@ textarea.form-control {
     body.custom-cursor-active .stat-card,
     body.custom-cursor-active .footer-brand,
     body.custom-cursor-active .theme-toggle,
+    body.custom-cursor-active .clickable-endorsement,
     body.custom-cursor-active .back-to-top {
         cursor: none !important;
     }
