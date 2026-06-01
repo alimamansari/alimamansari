@@ -302,28 +302,28 @@ a {
     overflow: hidden;
 }
 
-/* Premium shine sweep effect for buttons (bulletproof override) */
+/* Premium shine sweep effect for buttons */
 .btn::after {
     content: '';
-    position: absolute !important;
-    top: 0 !important;
-    left: -150% !important;
-    width: 60% !important;
-    height: 100% !important;
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 60%;
+    height: 100%;
     background: linear-gradient(
         to right,
         rgba(255, 255, 255, 0) 0%,
         rgba(255, 255, 255, 0.35) 50%,
         rgba(255, 255, 255, 0) 100%
-    ) !important;
-    transform: skewX(-25deg) !important;
-    transition: left 0.75s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    z-index: 5 !important;
-    pointer-events: none !important;
+    );
+    transform: skewX(-25deg);
+    transition: left 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 5;
+    pointer-events: none;
 }
 
 .btn:hover::after {
-    left: 150% !important;
+    left: 150%;
 }
 
 .btn-primary {
