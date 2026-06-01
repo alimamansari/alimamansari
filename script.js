@@ -460,6 +460,39 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    /* --- Clickable Endorsements Modal Population --- */
+    const clickableEndorsements = document.querySelectorAll('.clickable-endorsement');
+    const endorsementModal = document.getElementById('modal-endorsement');
+    const endorsementFullText = document.getElementById('endorsement-full-text');
+    const endorsementMentorAvatar = document.getElementById('endorsement-mentor-avatar');
+    const endorsementMentorName = document.getElementById('endorsement-mentor-name');
+    const endorsementMentorTitle = document.getElementById('endorsement-mentor-title');
+    const endorsementMentorInstitution = document.getElementById('endorsement-mentor-institution');
+
+    clickableEndorsements.forEach(card => {
+        card.addEventListener('click', () => {
+            if (endorsementModal && endorsementFullText) {
+                // Get data attributes
+                const fullQuote = card.getAttribute('data-full-quote');
+                const mentorName = card.getAttribute('data-mentor-name');
+                const mentorTitle = card.getAttribute('data-mentor-title');
+                const mentorInstitution = card.getAttribute('data-mentor-institution');
+                const mentorAvatar = card.getAttribute('data-mentor-avatar');
+
+                // Populate modal
+                endorsementFullText.textContent = `"${fullQuote}"`;
+                endorsementMentorName.textContent = mentorName;
+                endorsementMentorTitle.textContent = mentorTitle;
+                endorsementMentorInstitution.innerHTML = mentorInstitution;
+                endorsementMentorAvatar.textContent = mentorAvatar;
+
+                // Open modal
+                endorsementModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+
     /* --- Legal Modals (Disclaimer / Privacy / Terms) --- */
     const legalBtnMap = {
         'btn-disclaimer': 'modal-disclaimer',

@@ -2857,6 +2857,42 @@ textarea.form-control {
     }
 }
 
+/* Clickable Endorsement Styles */
+.clickable-endorsement {
+    cursor: pointer;
+}
+
+.read-more-btn-wrap {
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.read-more-link {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.3s ease, gap 0.3s ease;
+}
+
+.clickable-endorsement:hover .read-more-link {
+    color: var(--color-accent);
+}
+
+.clickable-endorsement:hover .read-more-link i {
+    transform: translateX(4px);
+}
+
+.read-more-link i {
+    transition: transform 0.3s ease;
+}
+
+.endorsement-modal-box {
+    max-width: 720px;
+}
+
 /* ==========================================================================
    HOBBIES & INTERESTS SECTION
    ========================================================================== */
