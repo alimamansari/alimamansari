@@ -44,8 +44,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const timer = setInterval(() => {
             step++;
             current = Math.min(increment * step, target);
-            // For decimal target like 4 with suffix ".9" show integer only
-            el.textContent = Math.floor(current) + (step >= steps ? suffix : '');
+            
+            // Use Math.round for smoother number transitions
+            let displayVal = Math.round(current);
+            
+            // For target = 1, force it to 1 quickly (after 150ms) to avoid staying on 0
+            if (target === 1 && step > 5) {
+                displayVal = 1;
+            }
+
+            el.textContent = displayVal + (step >= steps ? suffix : '');
             if (step >= steps) clearInterval(timer);
         }, duration / steps);
     }
