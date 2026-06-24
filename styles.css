@@ -1013,8 +1013,8 @@ a {
 }
 
 @keyframes floatImage {
-    0% { transform: translateY(0px) rotate(-0.8deg); }
-    100% { transform: translateY(-16px) rotate(0.8deg); }
+    0% { transform: translateY(0px) rotate(-1.5deg); }
+    100% { transform: translateY(-28px) rotate(1.5deg); }
 }
 
 /* --- About Section --- */
