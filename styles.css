@@ -3266,3 +3266,6 @@ textarea.form-control {
 .verified-badge-wrapper { display: inline-flex; justify-content: center; align-items: center; animation: popFlipShine 8s ease-in-out infinite; transform-style: preserve-3d; cursor: pointer; }
 
 .verified-badge-svg:hover { transform: scale(1.2); cursor: pointer; }
+
+@keyframes sweepShine { 0%, 82% { transform: translate(-30px, -30px); } 90%, 100% { transform: translate(30px, 30px); } }
+.badge-shine { animation: sweepShine 8s ease-in-out infinite; }
