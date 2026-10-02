@@ -3259,3 +3259,9 @@ textarea.form-control {
         padding: 30px 22px 26px;
     }
 }
+
+/* Verified Badge Animation */
+@keyframes spinBadge { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.spin-badge-polygon { transform-origin: 12px 12px; animation: spinBadge 15s linear infinite; }
+.verified-badge-svg { transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.verified-badge-svg:hover { transform: scale(1.2); cursor: pointer; }
