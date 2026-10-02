@@ -3288,12 +3288,12 @@ textarea.form-control {
 
 
 
-.red-i { position: relative; }
-.red-i::after { content: ''; position: absolute; top: 0.23em; left: 50%; transform: translateX(-50%); width: 0.18em; height: 0.18em; background-color: #ff0000; border-radius: 50%; }
 
 
-.red-i { position: relative; }
-.red-i::after { content: ''; position: absolute; top: 0.23em; left: 50%; transform: translateX(-50%); width: 0.18em; height: 0.18em; background-color: #ff0000; border-radius: 50%; }
+
+
+
+
 
 .verified-badge-wrapper::after {
   content: '';
