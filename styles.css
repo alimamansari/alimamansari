@@ -3285,14 +3285,31 @@ textarea.form-control {
   overflow: hidden;
   border-radius: 50%;
 }
-.verified-badge-wrapper::after {
-  content: '';
+
+
+.shine-element {
   position: absolute;
   top: 0;
   left: -100%;
   width: 50%;
   height: 100%;
-  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0) 100%);
   transform: skewX(-20deg);
   animation: shineSweep 8s ease-in-out infinite;
+  z-index: 10;
+}
+.red-i {
+  position: relative;
+  display: inline-block;
+}
+.red-i::after {
+  content: '';
+  position: absolute;
+  top: 0.28em;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0.16em;
+  height: 0.16em;
+  background-color: #ff0000;
+  border-radius: 50%;
 }
