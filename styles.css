@@ -3262,7 +3262,7 @@ textarea.form-control {
 
 /* Verified Badge Animation */
 
-@keyframes popFlipShine { 0%, 85%, 100% { transform: scale(1) perspective(400px) rotateY(0deg); filter: brightness(1) drop-shadow(0 0 0 rgba(29,155,240,0)); } 88% { transform: scale(1.35) perspective(400px) rotateY(180deg); filter: brightness(1.5) drop-shadow(0 0 10px rgba(29,155,240,0.8)); } 91% { transform: scale(1) perspective(400px) rotateY(360deg); filter: brightness(1) drop-shadow(0 0 0 rgba(29,155,240,0)); } }
-.verified-badge-svg { animation: popFlipShine 8s ease-in-out infinite; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+@keyframes popFlipShine { 0%, 85%, 100% { transform: scale(1) rotateY(0deg); filter: drop-shadow(0 0 0 rgba(29,155,240,0)); } 88% { transform: scale(1.35) rotateY(180deg); filter: drop-shadow(0 0 10px rgba(29,155,240,0.9)); } 91% { transform: scale(1) rotateY(360deg); filter: drop-shadow(0 0 0 rgba(29,155,240,0)); } }
+.verified-badge-wrapper { display: inline-flex; justify-content: center; align-items: center; animation: popFlipShine 8s ease-in-out infinite; transform-style: preserve-3d; cursor: pointer; }
 
 .verified-badge-svg:hover { transform: scale(1.2); cursor: pointer; }
