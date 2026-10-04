@@ -3263,46 +3263,134 @@ textarea.form-control {
 /* Verified Badge Animation */
 
 
-@keyframes popFlip {
-  0%, 85%, 100% { transform: scale(1) rotateY(0deg); }
-  88% { transform: scale(1.35) rotateY(180deg); }
-  91% { transform: scale(1) rotateY(360deg); }
-}
-@keyframes shineSweep {
-  0%, 85% { left: -100%; opacity: 0; }
-  86% { opacity: 1; }
-  90% { left: 100%; opacity: 1; }
-  91%, 100% { left: 100%; opacity: 0; }
-}
-.verified-badge-wrapper {
-  position: relative;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  animation: popFlip 8s ease-in-out infinite;
-  transform-style: preserve-3d;
-  cursor: pointer;
-  overflow: hidden;
-  border-radius: 50%;
+/* ==========================================================================
+   Logo 3D Flipping Emblem (Scholar Hat <-> Verified Badge)
+   ========================================================================== */
+.logo-flipper {
+    width: 36px;
+    height: 36px;
+    perspective: 1000px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
+.logo:hover .logo-flipper {
+    transform: scale(1.08);
+}
 
+.flipper-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: coinFlipBadge 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    border-radius: 50%;
+}
 
+.flipper-front,
+.flipper-back {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.flipper-front {
+    background: var(--color-primary);
+    color: #ffffff;
+    font-size: 1.1rem;
+    transform: rotateY(0deg) translateZ(1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
 
+.flipper-back {
+    background: radial-gradient(circle, rgba(29, 155, 240, 0.22) 0%, rgba(29, 155, 240, 0.05) 70%, transparent 100%);
+    border: 1px solid rgba(29, 155, 240, 0.35);
+    transform: rotateY(180deg) translateZ(1px);
+    overflow: hidden;
+}
 
+.flipper-shine {
+    position: absolute;
+    top: 0;
+    left: -140%;
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.95) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    pointer-events: none;
+    animation: flipperShineSweep 7s ease-in-out infinite;
+}
 
+@keyframes coinFlipBadge {
+    0%, 38% {
+        transform: scale(1) rotateY(0deg);
+        filter: drop-shadow(0 0 0 rgba(0,0,0,0));
+    }
+    41% {
+        /* Blink / Glow pulse before flip */
+        transform: scale(1.15) rotateY(0deg);
+        filter: brightness(1.25) drop-shadow(0 0 10px rgba(0, 168, 120, 0.8));
+    }
+    47% {
+        /* Edge turn */
+        transform: scale(1.1) rotateY(90deg);
+    }
+    51% {
+        /* Land on Back (Verified Tick) */
+        transform: scale(1.12) rotateY(180deg);
+        filter: brightness(1.2) drop-shadow(0 0 12px rgba(29, 155, 240, 0.9));
+    }
+    55% {
+        transform: scale(1) rotateY(180deg);
+        filter: drop-shadow(0 0 4px rgba(29, 155, 240, 0.4));
+    }
+    88% {
+        transform: scale(1) rotateY(180deg);
+        filter: drop-shadow(0 0 4px rgba(29, 155, 240, 0.4));
+    }
+    91% {
+        /* Blink / Glow pulse before returning */
+        transform: scale(1.15) rotateY(180deg);
+        filter: brightness(1.25) drop-shadow(0 0 10px rgba(29, 155, 240, 0.8));
+    }
+    96% {
+        /* Edge turn back */
+        transform: scale(1.1) rotateY(270deg);
+    }
+    100% {
+        transform: scale(1) rotateY(360deg);
+        filter: drop-shadow(0 0 0 rgba(0,0,0,0));
+    }
+}
 
-
-
-.verified-badge-wrapper::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
-  transform: skewX(-20deg);
-  animation: shineSweep 8s ease-in-out infinite;
+@keyframes flipperShineSweep {
+    0%, 50% {
+        left: -140%;
+        opacity: 0;
+    }
+    51% {
+        opacity: 1;
+    }
+    56% {
+        left: 150%;
+        opacity: 1;
+    }
+    57%, 100% {
+        left: 150%;
+        opacity: 0;
+    }
 }
