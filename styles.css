@@ -3264,53 +3264,67 @@ textarea.form-control {
 
 
 /* ==========================================================================
-   OPTION 2: Scholar Hat Catapults Tick -> Controlled Arc Jump -> 3D Flip & Shine
+   Logo 3D Flipping Emblem (Scholar Hat <-> Verified Badge)
    ========================================================================== */
-.hat-launcher {
+.logo-flipper {
+    width: 36px;
+    height: 36px;
+    perspective: 800px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    animation: hatCatapult 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    flex-shrink: 0;
     cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-.logo-name-group {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    position: relative;
+.logo:hover .logo-flipper {
+    transform: scale(1.08);
 }
 
-/* Outer container handles ONLY the jump trajectory */
-.emerging-tick {
+.flipper-inner {
     position: relative;
-    display: inline-flex;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.flipper-front,
+.flipper-back {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    animation: tickArcJump 8s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
     will-change: transform, opacity;
 }
 
-/* Inner disc handles ONLY the 3D flip & shine */
-.tick-disc {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    border-radius: 50%;
-    transform-style: preserve-3d;
-    perspective: 500px;
-    animation: tickDiscFlip 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    will-change: transform;
+/* FRONT: Scholar Hat */
+.flipper-front {
+    background: var(--color-primary);
+    color: #ffffff;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    animation: flipFrontAnim 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
-.emerging-shine {
+/* BACK: Verified Tick Badge */
+.flipper-back {
+    background: rgba(29, 155, 240, 0.15);
+    border: 1.5px solid rgba(29, 155, 240, 0.4);
+    box-shadow: 0 2px 10px rgba(29, 155, 240, 0.25);
+    overflow: hidden;
+    animation: flipBackAnim 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.flipper-shine {
     position: absolute;
     top: 0;
     left: -140%;
-    width: 60%;
+    width: 70%;
     height: 100%;
     background: linear-gradient(
         90deg,
@@ -3320,156 +3334,122 @@ textarea.form-control {
     );
     transform: skewX(-25deg);
     pointer-events: none;
-    animation: emergeShineSweep 8s ease-in-out infinite;
+    animation: flipperShineSweep 7s ease-in-out infinite;
 }
 
-/* Hat catapults tick & catches it */
-@keyframes hatCatapult {
-    0%, 14% {
-        transform: scale(1) translateY(0);
-        filter: none;
-    }
-    16% {
-        /* Squashes down preparing to launch */
-        transform: scale(1.15, 0.85);
-        filter: brightness(1.25) drop-shadow(0 0 10px rgba(0, 168, 120, 0.8));
-    }
-    18% {
-        /* Springs up throwing tick */
-        transform: scale(0.92, 1.18) translateY(-3px);
-        filter: brightness(1.3) drop-shadow(0 0 12px rgba(0, 168, 120, 0.9));
-    }
-    23% {
-        transform: scale(1) translateY(0);
-        filter: none;
-    }
-    82% {
-        transform: scale(1) translateY(0);
-        filter: none;
-    }
-    85% {
-        /* Prepares to catch returning tick */
-        transform: scale(1.1, 1.1);
-        filter: brightness(1.2) drop-shadow(0 0 8px rgba(0, 168, 120, 0.7));
-    }
-    88% {
-        /* Absorbs impact */
-        transform: scale(1.16, 0.86);
-    }
-    92%, 100% {
-        transform: scale(1) translateY(0);
-        filter: none;
-    }
-}
-
-/* Tick Arc Jump (stays safely inside navbar height) */
-@keyframes tickArcJump {
-    0%, 15% {
-        /* Asleep inside hat */
-        transform: translate(-140px, 0px) scale(0);
-        opacity: 0;
-    }
-    18% {
-        /* Shoots out of hat */
-        transform: translate(-140px, 0px) scale(0.8);
-        opacity: 1;
-    }
-    23% {
-        /* Low, smooth arc over name (stays inside navbar!) */
-        transform: translate(-70px, -14px) scale(1.1);
-        opacity: 1;
-    }
-    28% {
-        /* Touchdown at spot next to name */
-        transform: translate(0px, 0px) scale(1.18, 0.84);
-        opacity: 1;
-    }
-    31% {
-        /* Small rebound bounce */
-        transform: translate(0px, -3px) scale(0.95, 1.05);
-        opacity: 1;
-    }
-    34% {
-        /* Settles at spot */
-        transform: translate(0px, 0px) scale(1);
-        opacity: 1;
-    }
-    75% {
-        /* Stays steady next to name for ~3.3 seconds */
-        transform: translate(0px, 0px) scale(1);
-        opacity: 1;
-    }
-    78% {
-        /* Squashes down preparing for return jump */
-        transform: translate(0px, 0px) scale(1.12, 0.88);
-        opacity: 1;
-    }
-    83% {
-        /* Return arc back to hat */
-        transform: translate(-70px, -12px) scale(1.05);
-        opacity: 1;
-    }
-    88% {
-        /* Dives into hat */
-        transform: translate(-140px, 0px) scale(0.5);
-        opacity: 0.8;
-    }
-    91%, 100% {
-        /* Absorbed */
-        transform: translate(-140px, 0px) scale(0);
-        opacity: 0;
-    }
-}
-
-/* 3D Flip happens right after landing at its spot */
-@keyframes tickDiscFlip {
-    0%, 33% {
+@keyframes flipFrontAnim {
+    0%, 38% {
         transform: scale(1) rotateY(0deg);
-        filter: none;
-    }
-    35% {
-        /* Begins 3D flip */
-        transform: scale(1.18) rotateY(90deg);
-        filter: drop-shadow(0 0 8px rgba(29, 155, 240, 0.8));
-    }
-    38% {
-        /* Halfway through flip */
-        transform: scale(1.25) rotateY(180deg);
-        filter: brightness(1.25) drop-shadow(0 0 12px rgba(29, 155, 240, 0.95));
+        opacity: 1;
+        z-index: 2;
+        filter: drop-shadow(0 0 0 rgba(0,0,0,0));
     }
     41% {
-        /* Three-quarters */
-        transform: scale(1.18) rotateY(270deg);
+        /* Blink / Glow pulse before flip */
+        transform: scale(1.15) rotateY(0deg);
+        opacity: 1;
+        z-index: 2;
+        filter: brightness(1.3) drop-shadow(0 0 10px rgba(0, 168, 120, 0.85));
     }
-    44% {
-        /* Lands 3D flip facing front */
-        transform: scale(1) rotateY(360deg);
-        filter: drop-shadow(0 0 5px rgba(29, 155, 240, 0.45));
+    47% {
+        /* Turn to edge */
+        transform: scale(1.05) rotateY(90deg);
+        opacity: 1;
+        z-index: 2;
+        filter: none;
     }
-    75% {
-        transform: scale(1) rotateY(360deg);
-        filter: drop-shadow(0 0 3px rgba(29, 155, 240, 0.3));
+    47.1%, 94.9% {
+        /* Hidden while back is visible */
+        transform: scale(1) rotateY(90deg);
+        opacity: 0;
+        z-index: 1;
+        filter: none;
     }
-    76%, 100% {
+    95% {
+        /* Turn back in from edge */
+        transform: scale(1.05) rotateY(90deg);
+        opacity: 1;
+        z-index: 2;
+        filter: none;
+    }
+    100% {
         transform: scale(1) rotateY(0deg);
+        opacity: 1;
+        z-index: 2;
+        filter: drop-shadow(0 0 0 rgba(0,0,0,0));
+    }
+}
+
+@keyframes flipBackAnim {
+    0%, 47% {
+        /* Hidden while front is active */
+        transform: scale(1) rotateY(-90deg);
+        opacity: 0;
+        z-index: 1;
+        filter: none;
+    }
+    47.1% {
+        /* Emerge from edge */
+        transform: scale(1.05) rotateY(-90deg);
+        opacity: 1;
+        z-index: 2;
+        filter: none;
+    }
+    53% {
+        /* Land facing forward */
+        transform: scale(1.12) rotateY(0deg);
+        opacity: 1;
+        z-index: 2;
+        filter: brightness(1.2) drop-shadow(0 0 12px rgba(29, 155, 240, 0.95));
+    }
+    56% {
+        transform: scale(1) rotateY(0deg);
+        opacity: 1;
+        z-index: 2;
+        filter: drop-shadow(0 0 4px rgba(29, 155, 240, 0.4));
+    }
+    87% {
+        transform: scale(1) rotateY(0deg);
+        opacity: 1;
+        z-index: 2;
+        filter: drop-shadow(0 0 4px rgba(29, 155, 240, 0.4));
+    }
+    90% {
+        /* Blink / Glow pulse before returning */
+        transform: scale(1.15) rotateY(0deg);
+        opacity: 1;
+        z-index: 2;
+        filter: brightness(1.3) drop-shadow(0 0 10px rgba(29, 155, 240, 0.85));
+    }
+    94.9% {
+        /* Turn away to edge */
+        transform: scale(1.05) rotateY(-90deg);
+        opacity: 1;
+        z-index: 2;
+        filter: none;
+    }
+    95%, 100% {
+        /* Hidden again */
+        transform: scale(1) rotateY(-90deg);
+        opacity: 0;
+        z-index: 1;
         filter: none;
     }
 }
 
-/* Silver Shine sweeps right after 3D flip completes */
-@keyframes emergeShineSweep {
-    0%, 43% {
+@keyframes flipperShineSweep {
+    0%, 52% {
         left: -140%;
         opacity: 0;
     }
-    44% {
+    53% {
         opacity: 1;
     }
-    49% {
+    58% {
         left: 150%;
         opacity: 1;
     }
-    50%, 100% {
+    59%, 100% {
         left: 150%;
         opacity: 0;
     }
