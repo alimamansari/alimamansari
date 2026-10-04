@@ -3264,7 +3264,7 @@ textarea.form-control {
 
 
 /* ==========================================================================
-   OPTION 2: Scholar Hat Launches Jumping Verified Tick Over Name
+   OPTION 2: Scholar Hat Launches Jumping Tick, Lands & 3D Flips With Shine
    ========================================================================== */
 .hat-flipper {
     display: inline-flex;
@@ -3290,7 +3290,9 @@ textarea.form-control {
     overflow: hidden;
     border-radius: 50%;
     cursor: pointer;
-    animation: tickJumpOverName 8s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+    perspective: 600px;
+    transform-style: preserve-3d;
+    animation: tickJumpAndFlip 8s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
     will-change: transform, opacity;
 }
 
@@ -3349,84 +3351,103 @@ textarea.form-control {
     }
 }
 
-@keyframes tickJumpOverName {
+@keyframes tickJumpAndFlip {
     0%, 15% {
         /* Asleep inside hat */
-        transform: translate(-135px, 0px) scale(0) rotate(-180deg);
+        transform: translate(-135px, 0px) scale(0) rotateY(0deg);
         opacity: 0;
     }
     17% {
-        /* Shoots out of hat */
-        transform: translate(-135px, -6px) scale(0.7) rotate(-90deg);
+        /* Shoots out of hat into the air */
+        transform: translate(-135px, -6px) scale(0.7) rotateY(0deg);
         opacity: 1;
         filter: drop-shadow(0 0 8px rgba(29, 155, 240, 0.85));
     }
     22% {
         /* HIGH APEX OF JUMP - flying high over the text Alimam Ansari */
-        transform: translate(-68px, -26px) scale(1.15) rotate(90deg);
+        transform: translate(-68px, -28px) scale(1.15) rotateY(0deg);
         opacity: 1;
-        filter: drop-shadow(0 10px 14px rgba(29, 155, 240, 0.8));
+        filter: drop-shadow(0 10px 16px rgba(29, 155, 240, 0.8));
     }
     27% {
-        /* IMPACT - lands next to name with squash */
-        transform: translate(0px, 0px) scale(1.28, 0.72) rotate(360deg);
+        /* IMPACT - lands at its spot next to name */
+        transform: translate(0px, 0px) scale(1.25, 0.78) rotateY(0deg);
         opacity: 1;
         filter: drop-shadow(0 2px 6px rgba(29, 155, 240, 0.9));
     }
     30% {
-        /* REBOUND - small bouncy rebound */
-        transform: translate(0px, -6px) scale(0.92, 1.08) rotate(360deg);
+        /* Small rebound bounce */
+        transform: translate(0px, -4px) scale(0.95, 1.05) rotateY(0deg);
         opacity: 1;
     }
-    33% {
-        /* SETTLES into resting position */
-        transform: translate(0px, 0px) scale(1, 1) rotate(360deg);
+    32% {
+        /* Settles at its spot, ready to 3D FLIP! */
+        transform: translate(0px, 0px) scale(1) rotateY(0deg);
         opacity: 1;
-        filter: drop-shadow(0 0 4px rgba(29, 155, 240, 0.4));
+        filter: none;
+    }
+    34% {
+        /* Starts 3D flip */
+        transform: translate(0px, 0px) scale(1.18) rotateY(90deg);
+        filter: brightness(1.2) drop-shadow(0 0 10px rgba(29, 155, 240, 0.8));
+    }
+    37% {
+        /* Halfway through 3D flip */
+        transform: translate(0px, 0px) scale(1.25) rotateY(180deg);
+        filter: brightness(1.3) drop-shadow(0 0 14px rgba(29, 155, 240, 0.95));
+    }
+    40% {
+        /* Three-quarters flip */
+        transform: translate(0px, 0px) scale(1.18) rotateY(270deg);
+    }
+    43% {
+        /* Lands the 3D flip gracefully! */
+        transform: translate(0px, 0px) scale(1) rotateY(360deg);
+        filter: drop-shadow(0 0 6px rgba(29, 155, 240, 0.5));
     }
     75% {
-        /* Stays proudly in place for ~3.4 seconds */
-        transform: translate(0px, 0px) scale(1, 1) rotate(360deg);
+        /* Stays proudly in place for ~3 seconds */
+        transform: translate(0px, 0px) scale(1) rotateY(360deg);
         opacity: 1;
         filter: drop-shadow(0 0 4px rgba(29, 155, 240, 0.4));
     }
     78% {
-        /* Squashes down preparing for jump back */
-        transform: translate(0px, 0px) scale(1.15, 0.82) rotate(360deg);
+        /* Prepares for jump back */
+        transform: translate(0px, 0px) scale(1.15, 0.82) rotateY(360deg);
         filter: brightness(1.25) drop-shadow(0 0 8px rgba(29, 155, 240, 0.8));
     }
     83% {
         /* REVERSE JUMP in an arc back towards hat */
-        transform: translate(-68px, -22px) scale(1) rotate(180deg);
+        transform: translate(-68px, -24px) scale(1.05) rotateY(180deg);
         opacity: 1;
         filter: drop-shadow(0 8px 12px rgba(29, 155, 240, 0.7));
     }
     87% {
         /* Dives into the hat */
-        transform: translate(-135px, 0px) scale(0.4) rotate(0deg);
+        transform: translate(-135px, 0px) scale(0.4) rotateY(0deg);
         opacity: 0.7;
         filter: none;
     }
     90%, 100% {
         /* Absorbed */
-        transform: translate(-135px, 0px) scale(0) rotate(0deg);
+        transform: translate(-135px, 0px) scale(0) rotateY(0deg);
         opacity: 0;
     }
 }
 
 @keyframes emergeShineSweep {
-    0%, 33% {
+    0%, 41% {
         left: -140%;
         opacity: 0;
     }
-    34% {
+    42% {
         opacity: 1;
     }
-    40% {
+    48% {
         left: 150%;
         opacity: 1;
     }
-    41%, 100% {
+    49%, 100% {
         left: 150%;
         opacity: 0;
     }
