@@ -3477,170 +3477,242 @@ textarea.form-control {
         opacity: 0;
     }
 }/* ==========================================================================
-   AUTHENTIC iOS / visionOS LIQUID GLASS UI (VIBRANT & VISIBLE)
+   ULTRA-VISIBLE iOS 27 / visionOS LIQUID GLASS UI (PRISMATIC & WATER-LIKE)
    ========================================================================== */
 
-/* 1. Header Liquid Glass Floating Island */
+/* 1. Ultra Liquid Glass Floating Header Capsule */
 .header {
-    background: rgba(255, 255, 255, 0.45) !important;
-    backdrop-filter: blur(28px) saturate(220%) contrast(105%) !important;
-    -webkit-backdrop-filter: blur(28px) saturate(220%) contrast(105%) !important;
-    border: 1.5px solid rgba(255, 255, 255, 0.85) !important;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.45) 0%,
+        rgba(255, 255, 255, 0.15) 50%,
+        rgba(255, 255, 255, 0.35) 100%
+    ) !important;
+    backdrop-filter: blur(24px) saturate(240%) contrast(110%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(240%) contrast(110%) !important;
+    border: 2px solid transparent !important;
+    border-image: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(15, 118, 110, 0.6) 40%,
+        rgba(45, 212, 191, 0.8) 70%,
+        rgba(255, 255, 255, 0.9) 100%
+    ) 1 !important;
+    border-radius: 40px !important;
     box-shadow: 
-        0 20px 48px -10px rgba(15, 23, 42, 0.12),
-        0 0 30px -4px rgba(15, 118, 110, 0.2),
-        inset 0 2px 2px 0 rgba(255, 255, 255, 1),
-        inset 0 -2px 3px 0 rgba(15, 118, 110, 0.08) !important;
+        0 25px 60px -10px rgba(15, 23, 42, 0.18),
+        0 0 35px 2px rgba(15, 118, 110, 0.3),
+        inset 0 3px 3px 0 rgba(255, 255, 255, 0.95),
+        inset 0 -3px 4px 0 rgba(15, 118, 110, 0.2) !important;
+    position: fixed !important;
     overflow: hidden;
 }
 
+/* Prismatic chromatic aberration aura behind the glass */
+.header::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 42px;
+    padding: 2px;
+    background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0.8),
+        rgba(45, 212, 191, 0.7),
+        rgba(129, 140, 248, 0.6),
+        rgba(251, 146, 60, 0.5),
+        rgba(255, 255, 255, 0.8)
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    animation: liquidBorderRainbow 10s linear infinite;
+    opacity: 0.85;
+}
+
+/* Fast gleaming liquid light sweep across the glass */
 .header::before {
     content: '';
     position: absolute;
     top: 0;
-    left: -150%;
+    left: -140%;
     width: 60%;
     height: 100%;
     background: linear-gradient(
         90deg,
         rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.75) 50%,
+        rgba(255, 255, 255, 0.85) 50%,
         rgba(255, 255, 255, 0) 100%
     );
     transform: skewX(-25deg);
     pointer-events: none;
-    animation: liquidHeaderSheen 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    z-index: 1;
+    animation: liquidHeaderGleam 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    z-index: 10;
 }
 
-@keyframes liquidHeaderSheen {
-    0%, 25% { left: -150%; opacity: 0; }
-    26%     { opacity: 1; }
-    38%     { left: 160%; opacity: 1; }
-    39%, 100% { left: 160%; opacity: 0; }
+@keyframes liquidBorderRainbow {
+    0%   { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
 }
 
-/* Dark Mode Liquid Glass: Translucent Frosted Obsidian with Electric Cyan Rim */
+@keyframes liquidHeaderGleam {
+    0%, 35% { left: -140%; opacity: 0; }
+    36%     { opacity: 1; }
+    46%     { left: 150%; opacity: 1; }
+    47%, 100% { left: 150%; opacity: 0; }
+}
+
+/* Dark Mode Liquid Glass: Translucent Crystal Water with Cyan/Purple Prismatic Glow */
 [data-theme="dark"] .header {
-    background: rgba(15, 23, 42, 0.38) !important;
-    backdrop-filter: blur(32px) saturate(240%) contrast(110%) !important;
-    -webkit-backdrop-filter: blur(32px) saturate(240%) contrast(110%) !important;
-    border: 1.5px solid rgba(45, 212, 191, 0.45) !important;
+    background: linear-gradient(
+        135deg,
+        rgba(30, 41, 59, 0.45) 0%,
+        rgba(15, 23, 42, 0.25) 50%,
+        rgba(30, 41, 59, 0.35) 100%
+    ) !important;
+    backdrop-filter: blur(28px) saturate(260%) contrast(115%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(260%) contrast(115%) !important;
     box-shadow: 
-        0 24px 60px -12px rgba(0, 0, 0, 0.75),
-        0 0 35px -2px rgba(45, 212, 191, 0.35),
-        inset 0 2px 2px 0 rgba(255, 255, 255, 0.65),
-        inset 0 -2px 3px 0 rgba(45, 212, 191, 0.25) !important;
+        0 30px 70px -15px rgba(0, 0, 0, 0.85),
+        0 0 45px rgba(45, 212, 191, 0.45),
+        0 0 20px rgba(129, 140, 248, 0.35),
+        inset 0 3px 3px 0 rgba(255, 255, 255, 0.75),
+        inset 0 -3px 4px 0 rgba(45, 212, 191, 0.35) !important;
 }
 
 [data-theme="dark"] .header::before {
     background: linear-gradient(
         90deg,
         rgba(45, 212, 191, 0) 0%,
-        rgba(255, 255, 255, 0.45) 50%,
+        rgba(255, 255, 255, 0.75) 50%,
         rgba(45, 212, 191, 0) 100%
     );
 }
 
 .header.scrolled {
-    background: rgba(255, 255, 255, 0.65) !important;
-    border-color: rgba(15, 118, 110, 0.5) !important;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba(255, 255, 255, 0.3) 100%
+    ) !important;
     box-shadow: 
-        0 22px 50px -10px rgba(15, 23, 42, 0.16),
-        0 0 35px rgba(15, 118, 110, 0.28),
-        inset 0 2px 2px 0 rgba(255, 255, 255, 1) !important;
+        0 25px 60px -10px rgba(15, 23, 42, 0.22),
+        0 0 40px rgba(15, 118, 110, 0.4),
+        inset 0 3px 3px 0 rgba(255, 255, 255, 1) !important;
 }
 
 [data-theme="dark"] .header.scrolled {
-    background: rgba(11, 15, 25, 0.52) !important;
-    border-color: rgba(45, 212, 191, 0.65) !important;
+    background: linear-gradient(
+        135deg,
+        rgba(30, 41, 59, 0.55) 0%,
+        rgba(15, 23, 42, 0.35) 100%
+    ) !important;
     box-shadow: 
-        0 26px 65px -10px rgba(0, 0, 0, 0.85),
-        0 0 45px rgba(45, 212, 191, 0.45),
-        inset 0 2px 2px 0 rgba(255, 255, 255, 0.75) !important;
+        0 30px 80px -12px rgba(0, 0, 0, 0.9),
+        0 0 55px rgba(45, 212, 191, 0.55),
+        inset 0 3px 3px 0 rgba(255, 255, 255, 0.85) !important;
 }
 
-/* 2. Hero Live Status Badge - Glowing Liquid Pill */
+/* 2. Hero Live Status Badge - Water Droplet Glass Capsule */
 .hero-badge {
-    background: rgba(15, 118, 110, 0.12) !important;
-    backdrop-filter: blur(20px) saturate(200%) !important;
-    -webkit-backdrop-filter: blur(20px) saturate(200%) !important;
-    border: 1.5px solid rgba(15, 118, 110, 0.45) !important;
+    background: linear-gradient(
+        135deg,
+        rgba(15, 118, 110, 0.2) 0%,
+        rgba(255, 255, 255, 0.4) 100%
+    ) !important;
+    backdrop-filter: blur(20px) saturate(220%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(220%) !important;
+    border: 2px solid rgba(15, 118, 110, 0.6) !important;
     box-shadow: 
-        0 8px 24px -4px rgba(15, 118, 110, 0.25),
-        0 0 15px rgba(15, 118, 110, 0.15),
-        inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.9) !important;
+        0 10px 30px -4px rgba(15, 118, 110, 0.35),
+        0 0 20px rgba(15, 118, 110, 0.25),
+        inset 0 2px 3px 0 rgba(255, 255, 255, 0.95),
+        inset 0 -2px 3px 0 rgba(15, 118, 110, 0.2) !important;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 .hero-badge:hover {
-    transform: translateY(-2px) scale(1.03);
-    border-color: var(--color-primary) !important;
+    transform: translateY(-3px) scale(1.04);
     box-shadow: 
-        0 12px 32px -4px rgba(15, 118, 110, 0.4),
-        0 0 25px rgba(15, 118, 110, 0.35),
-        inset 0 1.5px 2px 0 #ffffff !important;
+        0 15px 40px -4px rgba(15, 118, 110, 0.5),
+        0 0 35px rgba(15, 118, 110, 0.45),
+        inset 0 2px 3px 0 #ffffff !important;
 }
 
 [data-theme="dark"] .hero-badge {
-    background: rgba(45, 212, 191, 0.1) !important;
-    backdrop-filter: blur(22px) saturate(220%) !important;
-    -webkit-backdrop-filter: blur(22px) saturate(220%) !important;
-    border: 1.5px solid rgba(45, 212, 191, 0.5) !important;
+    background: linear-gradient(
+        135deg,
+        rgba(45, 212, 191, 0.2) 0%,
+        rgba(30, 41, 59, 0.4) 100%
+    ) !important;
+    border: 2px solid rgba(45, 212, 191, 0.7) !important;
     box-shadow: 
-        0 8px 26px -4px rgba(0, 0, 0, 0.6),
-        0 0 22px rgba(45, 212, 191, 0.3),
-        inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.6) !important;
+        0 10px 35px -4px rgba(0, 0, 0, 0.7),
+        0 0 30px rgba(45, 212, 191, 0.45),
+        inset 0 2px 3px 0 rgba(255, 255, 255, 0.8),
+        inset 0 -2px 3px 0 rgba(45, 212, 191, 0.3) !important;
 }
 
 [data-theme="dark"] .hero-badge:hover {
-    border-color: #2dd4bf !important;
     box-shadow: 
-        0 12px 36px -4px rgba(0, 0, 0, 0.7),
-        0 0 35px rgba(45, 212, 191, 0.55),
-        inset 0 2px 2px 0 #ffffff !important;
+        0 15px 45px -4px rgba(0, 0, 0, 0.85),
+        0 0 45px rgba(45, 212, 191, 0.7),
+        inset 0 2px 3px 0 #ffffff !important;
 }
 
-/* 3. Hero Profile Image Frame - Liquid Glass Prism Portal */
+/* 3. Hero Profile Image Frame - Liquid Water Portal */
 .profile-img-wrap {
-    backdrop-filter: blur(14px) !important;
-    -webkit-backdrop-filter: blur(14px) !important;
+    backdrop-filter: blur(18px) !important;
+    -webkit-backdrop-filter: blur(18px) !important;
     box-shadow: 
-        0 24px 55px -10px rgba(15, 23, 42, 0.22),
-        0 0 35px rgba(15, 118, 110, 0.3),
-        inset 0 3px 4px rgba(255, 255, 255, 1),
-        inset 0 -3px 4px rgba(0, 0, 0, 0.1) !important;
-    border: 3.5px solid rgba(255, 255, 255, 0.95) !important;
+        0 30px 70px -10px rgba(15, 23, 42, 0.28),
+        0 0 45px rgba(15, 118, 110, 0.4),
+        0 0 25px rgba(45, 212, 191, 0.3),
+        inset 0 4px 6px rgba(255, 255, 255, 1),
+        inset 0 -4px 6px rgba(0, 0, 0, 0.15) !important;
+    border: 4px solid rgba(255, 255, 255, 0.95) !important;
 }
 
 [data-theme="dark"] .profile-img-wrap {
     box-shadow: 
-        0 30px 70px -12px rgba(0, 0, 0, 0.85),
-        0 0 45px rgba(45, 212, 191, 0.45),
-        inset 0 3px 4px rgba(255, 255, 255, 0.7),
-        inset 0 -3px 4px rgba(0, 0, 0, 0.7) !important;
-    border: 3.5px solid rgba(45, 212, 191, 0.6) !important;
+        0 35px 85px -12px rgba(0, 0, 0, 0.9),
+        0 0 60px rgba(45, 212, 191, 0.6),
+        0 0 30px rgba(129, 140, 248, 0.4),
+        inset 0 4px 6px rgba(255, 255, 255, 0.85),
+        inset 0 -4px 6px rgba(0, 0, 0, 0.8) !important;
+    border: 4px solid rgba(45, 212, 191, 0.8) !important;
 }
 
-/* 4. Orbiting Social Badges - Ultra Floating Glass Bubbles */
+/* 4. Orbiting Social Badges - Glowing Liquid Crystal Spheres */
 .orbit-icon {
-    background: rgba(255, 255, 255, 0.55) !important;
-    backdrop-filter: blur(20px) saturate(200%) !important;
-    -webkit-backdrop-filter: blur(20px) saturate(200%) !important;
-    border: 1.5px solid rgba(255, 255, 255, 0.95) !important;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.75) 0%,
+        rgba(255, 255, 255, 0.35) 100%
+    ) !important;
+    backdrop-filter: blur(22px) saturate(220%) !important;
+    -webkit-backdrop-filter: blur(22px) saturate(220%) !important;
+    border: 2px solid rgba(255, 255, 255, 1) !important;
     box-shadow: 
-        0 10px 28px -4px rgba(15, 23, 42, 0.15),
-        0 0 15px rgba(15, 118, 110, 0.2),
-        inset 0 2px 2px 0 rgba(255, 255, 255, 1) !important;
+        0 12px 32px -4px rgba(15, 23, 42, 0.2),
+        0 0 20px rgba(15, 118, 110, 0.3),
+        inset 0 2.5px 3px 0 rgba(255, 255, 255, 1),
+        inset 0 -2px 3px 0 rgba(0, 0, 0, 0.08) !important;
 }
 
 [data-theme="dark"] .orbit-icon {
-    background: rgba(17, 24, 39, 0.45) !important;
-    backdrop-filter: blur(24px) saturate(220%) !important;
-    -webkit-backdrop-filter: blur(24px) saturate(220%) !important;
-    border: 1.5px solid rgba(45, 212, 191, 0.45) !important;
+    background: linear-gradient(
+        135deg,
+        rgba(30, 41, 59, 0.6) 0%,
+        rgba(15, 23, 42, 0.3) 100%
+    ) !important;
+    backdrop-filter: blur(24px) saturate(240%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(240%) !important;
+    border: 2px solid rgba(45, 212, 191, 0.65) !important;
     box-shadow: 
-        0 12px 32px -4px rgba(0, 0, 0, 0.6),
-        0 0 20px rgba(45, 212, 191, 0.35),
-        inset 0 2px 2px 0 rgba(255, 255, 255, 0.55) !important;
+        0 14px 36px -4px rgba(0, 0, 0, 0.75),
+        0 0 25px rgba(45, 212, 191, 0.5),
+        inset 0 2.5px 3px 0 rgba(255, 255, 255, 0.75),
+        inset 0 -2px 3px 0 rgba(45, 212, 191, 0.3) !important;
 }
