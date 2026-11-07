@@ -72,7 +72,7 @@
         <nav class="tool-tabs" role="tablist">
             <button class="tab-btn active" data-tab="compress-img" role="tab">
                 <i class="fa-solid fa-gauge-high"></i>
-                <span>Compress to Target KB</span>
+                <span>Compress Image</span>
             </button>
             <button class="tab-btn" data-tab="pdf-to-jpg" role="tab">
                 <i class="fa-solid fa-file-pdf"></i>
@@ -373,15 +373,23 @@
 
                 <div class="controls-grid">
                     <div class="control-box">
-                        <label for="cpdf-level">
-                            <strong>Compression Intensity:</strong>
-                            <span class="helper-text">Higher compression reduces more file size</span>
+                        <label for="cpdf-target-kb">
+                            <strong>Target File Size (KB):</strong>
+                            <span class="helper-text">Enter your desired maximum file size</span>
                         </label>
-                        <select id="cpdf-level" class="select-styled">
-                            <option value="low">Low Compression (Best Quality &bull; ~25% reduction)</option>
-                            <option value="medium" selected>Balanced Compression (Recommended &bull; ~50% reduction)</option>
-                            <option value="high">Maximum Compression (Smallest File &bull; ~75% reduction)</option>
-                        </select>
+                        <div class="input-with-unit">
+                            <input type="number" id="cpdf-target-kb" min="20" max="50000" step="10" value="200">
+                            <span class="unit-label">KB</span>
+                        </div>
+                        <div class="quick-presets">
+                            <span class="preset-label">Quick Presets:</span>
+                            <button type="button" class="preset-btn cpdf-preset-btn" data-kb="30">30 KB</button>
+                            <button type="button" class="preset-btn cpdf-preset-btn" data-kb="50">50 KB</button>
+                            <button type="button" class="preset-btn cpdf-preset-btn" data-kb="100">100 KB</button>
+                            <button type="button" class="preset-btn cpdf-preset-btn active" data-kb="200">200 KB</button>
+                            <button type="button" class="preset-btn cpdf-preset-btn" data-kb="500">500 KB</button>
+                            <button type="button" class="preset-btn cpdf-preset-btn" data-kb="1000">1000 KB</button>
+                        </div>
                     </div>
                 </div>
 

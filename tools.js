@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const imgOrigSize = document.getElementById('img-orig-size');
     const imgRemoveBtn = document.getElementById('img-remove-btn');
     const targetKbInput = document.getElementById('target-kb-input');
-    const presetBtns = document.querySelectorAll('.preset-btn');
+    const presetBtns = document.querySelectorAll('#tab-compress-img .preset-btn');
     const imgFormatSelect = document.getElementById('img-format-select');
     const btnCompressImg = document.getElementById('btn-compress-img');
     const imgProgressWrap = document.getElementById('img-progress-wrap');
@@ -600,7 +600,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const cpdfName = document.getElementById('cpdf-name');
     const cpdfOrigSize = document.getElementById('cpdf-orig-size');
     const cpdfRemoveBtn = document.getElementById('cpdf-remove-btn');
-    const cpdfLevel = document.getElementById('cpdf-level');
+    const cpdfTargetKb = document.getElementById('cpdf-target-kb');
+    const cpdfPresetBtns = document.querySelectorAll('.cpdf-preset-btn');
     const btnCompressPdfAction = document.getElementById('btn-compress-pdf-action');
     const cpdfProgressWrap = document.getElementById('cpdf-progress-wrap');
     const cpdfProgressFill = document.getElementById('cpdf-progress-fill');
@@ -612,6 +613,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let cpdfLoadedDoc = null;
     let cpdfOriginalBytes = 0;
+
+    // Presets for PDF Target KB
+    cpdfPresetBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            cpdfPresetBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            cpdfTargetKb.value = btn.getAttribute('data-kb');
+        });
+    });
+
+    cpdfTargetKb.addEventListener('input', () => {
+        cpdfPresetBtns.forEach(btn => {
+            if (btn.getAttribute('data-kb') === cpdfTargetKb.value) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+    });
 
     cpdfDropZone.addEventListener('click', () => cpdfInput.click());
 
@@ -661,57 +681,117 @@ document.addEventListener('DOMContentLoaded', () => {
         cpdfProgressWrap.style.display = 'flex';
         cpdfResultCard.style.display = 'none';
 
-        const intensity = cpdfLevel.value;
-        let scale = 1.6;
-        let quality = 0.75;
+        const targetKB = parseFloat(cpdfTargetKb.value) || 200;
+        const targetBytes = targetKB * 1024;
+        const totalPages = cpdfLoadedDoc.numPages;
 
-        if (intensity === 'low') {
-            scale = 2.0;
-            quality = 0.85;
-        } else if (intensity === 'high') {
-            scale = 1.2;
-            quality = 0.55;
-        }
+        cpdfProgressFill.style.width = '5%';
+        cpdfProgressText.textContent = `Preparing compression for ${totalPages} page(s) (Target: ${targetKB} KB)...`;
+
+        // Estimate PDF container overhead (~3 KB base + ~600 bytes per page)
+        const containerOverhead = 3000 + (totalPages * 600);
+        const safeTotalContentBytes = Math.max(targetBytes - containerOverhead, totalPages * 8000) * 0.95;
+        const targetBytesPerPage = Math.floor(safeTotalContentBytes / totalPages);
 
         try {
             const { jsPDF } = window.jspdf;
             let outDoc = null;
-            const totalPages = cpdfLoadedDoc.numPages;
 
             for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
-                cpdfProgressFill.style.width = Math.round((pageNum / totalPages) * 100) + '%';
-                cpdfProgressText.textContent = `Compressing page ${pageNum} of ${totalPages}...`;
+                const percent = Math.round(((pageNum - 1) / totalPages) * 90) + 5;
+                cpdfProgressFill.style.width = percent + '%';
+                cpdfProgressText.textContent = `Compressing page ${pageNum} of ${totalPages} to target size...`;
 
                 const page = await cpdfLoadedDoc.getPage(pageNum);
-                const viewport = page.getViewport({ scale });
+
+                // Determine base scale based on target budget per page
+                let baseScale = 1.6;
+                if (targetBytesPerPage >= 250 * 1024) baseScale = 1.8;
+                else if (targetBytesPerPage >= 120 * 1024) baseScale = 1.5;
+                else if (targetBytesPerPage >= 60 * 1024) baseScale = 1.25;
+                else if (targetBytesPerPage >= 30 * 1024) baseScale = 1.0;
+                else baseScale = 0.85;
+
+                const viewport = page.getViewport({ scale: baseScale });
+                const origViewport = page.getViewport({ scale: 1.0 });
 
                 const canvas = document.createElement('canvas');
                 canvas.width = viewport.width;
                 canvas.height = viewport.height;
                 const ctx = canvas.getContext('2d');
-
                 ctx.fillStyle = '#ffffff';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
                 await page.render({ canvasContext: ctx, viewport }).promise;
 
-                const dataUrl = canvas.toDataURL('image/jpeg', quality);
+                // Adaptive Quality & Scale Search for Target Size
+                let bestDataUrl = null;
+                let bestBytes = Infinity;
 
-                const isLandscape = viewport.width > viewport.height;
+                // Binary search JPEG quality
+                let lowQ = 0.10;
+                let highQ = 0.88;
+
+                for (let iter = 0; iter < 5; iter++) {
+                    const midQ = (lowQ + highQ) / 2;
+                    const dataUrl = canvas.toDataURL('image/jpeg', midQ);
+                    const approxBytes = Math.round((dataUrl.length - 23) * 0.75);
+
+                    if (approxBytes <= targetBytesPerPage) {
+                        bestDataUrl = dataUrl;
+                        bestBytes = approxBytes;
+                        lowQ = midQ; // try higher quality while staying under limit
+                    } else {
+                        highQ = midQ; // too big, decrease quality
+                        if (!bestDataUrl || approxBytes < bestBytes) {
+                            bestDataUrl = dataUrl;
+                            bestBytes = approxBytes;
+                        }
+                    }
+                }
+
+                // If still above targetBytesPerPage and target is tight, scale down dimensions
+                if (bestBytes > targetBytesPerPage && baseScale > 0.6) {
+                    let subScale = 0.75;
+                    while (subScale >= 0.45 && bestBytes > targetBytesPerPage) {
+                        const downCanvas = document.createElement('canvas');
+                        downCanvas.width = Math.round(canvas.width * subScale);
+                        downCanvas.height = Math.round(canvas.height * subScale);
+                        const downCtx = downCanvas.getContext('2d');
+                        downCtx.fillStyle = '#ffffff';
+                        downCtx.fillRect(0, 0, downCanvas.width, downCanvas.height);
+                        downCtx.drawImage(canvas, 0, 0, downCanvas.width, downCanvas.height);
+
+                        const downDataUrl = downCanvas.toDataURL('image/jpeg', 0.68);
+                        const downBytes = Math.round((downDataUrl.length - 23) * 0.75);
+                        bestDataUrl = downDataUrl;
+                        bestBytes = downBytes;
+                        if (downBytes <= targetBytesPerPage) break;
+                        subScale -= 0.15;
+                    }
+                }
+
+                // Maintain original PDF page dimensions in points for crisp layout
+                const isLandscape = origViewport.width > origViewport.height;
                 const pageOrientation = isLandscape ? 'l' : 'p';
+                const pageWidthPt = origViewport.width;
+                const pageHeightPt = origViewport.height;
 
                 if (pageNum === 1) {
                     outDoc = new jsPDF({
                         orientation: pageOrientation,
                         unit: 'pt',
-                        format: [viewport.width, viewport.height]
+                        format: [pageWidthPt, pageHeightPt]
                     });
                 } else {
-                    outDoc.addPage([viewport.width, viewport.height], pageOrientation);
+                    outDoc.addPage([pageWidthPt, pageHeightPt], pageOrientation);
                 }
 
-                outDoc.addImage(dataUrl, 'JPEG', 0, 0, viewport.width, viewport.height);
+                outDoc.addImage(bestDataUrl, 'JPEG', 0, 0, pageWidthPt, pageHeightPt, undefined, 'FAST');
             }
+
+            cpdfProgressFill.style.width = '95%';
+            cpdfProgressText.textContent = 'Finalizing compressed PDF file...';
 
             const compressedBlob = outDoc.output('blob');
             const compressedUrl = URL.createObjectURL(compressedBlob);
@@ -722,8 +802,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const baseName = cpdfName.textContent.replace(/\.pdf$/i, '');
             cpdfDownloadBtn.href = compressedUrl;
-            cpdfDownloadBtn.download = `${baseName}_compressed.pdf`;
+            cpdfDownloadBtn.download = `${baseName}_${Math.round(compressedBlob.size / 1024)}KB.pdf`;
 
+            cpdfProgressFill.style.width = '100%';
             cpdfProgressText.textContent = 'PDF compressed successfully!';
             cpdfResultCard.style.display = 'block';
 
