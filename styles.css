@@ -393,6 +393,20 @@ a {
     box-shadow: 0 8px 24px -3px rgba(var(--color-accent-rgb), 0.4);
 }
 
+/* Tools Studio Button */
+.btn-tools {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 4px 15px -3px rgba(var(--color-primary-rgb), 0.35);
+}
+
+.btn-tools:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px -3px rgba(var(--color-primary-rgb), 0.5);
+    color: #ffffff;
+}
+
 /* --- Floating Mono Monogram Header --- */
 .header {
     position: fixed;
