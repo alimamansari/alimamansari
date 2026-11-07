@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO & Metadata -->
+    <title>Secure PDF & Image Studio | 100% Client-Side Privacy | Alimam Ansari</title>
+    <meta name="description" content="Free, 100% private, in-browser PDF & Image Studio. Convert PDF to JPG, JPG to PDF, and compress images to your exact target KB size. Zero server upload, zero data leak.">
+    <meta name="author" content="Alimam Ansari">
+    <meta name="theme-color" content="#0d9488">
+    <link rel="canonical" href="https://alimamansari.in/tools.html">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Tools Stylesheet -->
+    <link rel="stylesheet" href="tools.css?v=1.0.0">
+
+    <!-- CDNs for 100% In-Browser Zero-Server Processing -->
+    <!-- 1. PDF.js (by Mozilla) to render and extract PDF pages to high-res canvas/images -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <!-- 2. jsPDF to merge and assemble images into clean PDFs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- 3. JSZip to bundle multiple converted images into a single ZIP download -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+
+    <!-- Ambient Mesh Background -->
+    <div class="mesh-bg">
+        <div class="mesh-circle circle-1"></div>
+        <div class="mesh-circle circle-2"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="header">
+        <a href="index.html" class="logo" title="Back to Portfolio Home">
+            <div class="logo-back-icon">
+                <i class="fa-solid fa-arrow-left"></i>
+            </div>
+            <span>Alimam Ansari <small class="logo-sub">/ Studio</small></span>
+        </a>
+
+        <div class="header-actions">
+            <div class="privacy-pill" title="All processing happens inside your device browser. No files are ever sent to any server.">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>100% Private &amp; In-Browser</span>
+            </div>
+            <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle dark/light theme">
+                <i class="fa-solid fa-moon" id="theme-icon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="studio-main">
+        <!-- Hero Header -->
+        <section class="studio-hero">
+            <span class="studio-badge">
+                <i class="fa-solid fa-lock"></i> Zero Server Upload &bull; Zero Data Leak Risk
+            </span>
+            <h1 class="studio-title">PDF &amp; Image <span>Privacy Studio</span></h1>
+            <p class="studio-desc">
+                Convert, merge, and compress your official documents directly inside your browser's RAM memory. 
+                Your sensitive files <strong>never leave your computer or phone</strong>.
+            </p>
+        </section>
+
+        <!-- Tools Tab Navigation -->
+        <nav class="tool-tabs" role="tablist">
+            <button class="tab-btn active" data-tab="compress-img" role="tab">
+                <i class="fa-solid fa-gauge-high"></i>
+                <span>Compress to Target KB</span>
+            </button>
+            <button class="tab-btn" data-tab="pdf-to-jpg" role="tab">
+                <i class="fa-solid fa-file-pdf"></i>
+                <span>PDF to JPG</span>
+            </button>
+            <button class="tab-btn" data-tab="jpg-to-pdf" role="tab">
+                <i class="fa-solid fa-images"></i>
+                <span>JPG / Images to PDF</span>
+            </button>
+            <button class="tab-btn" data-tab="compress-pdf" role="tab">
+                <i class="fa-solid fa-file-zipper"></i>
+                <span>Compress PDF</span>
+            </button>
+        </nav>
+
+        <!-- TAB 1: EXACT TARGET-KB IMAGE COMPRESSOR -->
+        <section class="tool-card active" id="tab-compress-img">
+            <div class="tool-header">
+                <div class="tool-icon-wrap"><i class="fa-solid fa-compress"></i></div>
+                <div>
+                    <h2>Image Compressor <span class="tag-accent">Exact Target KB</span></h2>
+                    <p>Specify the exact file size you need (e.g. 50 KB, 100 KB, 200 KB) for GPAT, NIPER, or exam form submissions.</p>
+                </div>
+            </div>
+
+            <!-- Drop Zone -->
+            <div class="drop-zone" id="img-drop-zone">
+                <input type="file" id="img-input" accept="image/jpeg,image/png,image/webp" class="file-input-hidden">
+                <div class="drop-content">
+                    <div class="upload-icon-circle"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                    <h3>Drag &amp; Drop Image Here or <span class="browse-link">Browse</span></h3>
+                    <p class="drop-hint">Supports JPG, PNG, WEBP &bull; Max 25 MB</p>
+                </div>
+            </div>
+
+            <!-- Configuration & Action Area (shown after file selection) -->
+            <div class="tool-workbench" id="img-workbench" style="display: none;">
+                <div class="file-info-bar">
+                    <div class="file-meta">
+                        <i class="fa-solid fa-image"></i>
+                        <span id="img-name" class="file-name">image.jpg</span>
+                        <span class="file-size-badge" id="img-orig-size">Original: 1.8 MB</span>
+                    </div>
+                    <button class="btn-text-danger" id="img-remove-btn"><i class="fa-solid fa-xmark"></i> Remove</button>
+                </div>
+
+                <!-- Target KB Control -->
+                <div class="controls-grid">
+                    <div class="control-box">
+                        <label for="target-kb-input">
+                            <strong>Target File Size (KB):</strong>
+                            <span class="helper-text">Enter your desired maximum file size</span>
+                        </label>
+                        <div class="input-with-unit">
+                            <input type="number" id="target-kb-input" min="10" max="10000" step="5" value="100">
+                            <span class="unit-label">KB</span>
+                        </div>
+                        <div class="quick-presets">
+                            <span class="preset-label">Quick Presets:</span>
+                            <button type="button" class="preset-btn" data-kb="30">30 KB</button>
+                            <button type="button" class="preset-btn" data-kb="50">50 KB</button>
+                            <button type="button" class="preset-btn active" data-kb="100">100 KB</button>
+                            <button type="button" class="preset-btn" data-kb="200">200 KB</button>
+                            <button type="button" class="preset-btn" data-kb="500">500 KB</button>
+                        </div>
+                    </div>
+
+                    <div class="control-box">
+                        <label for="img-format-select">
+                            <strong>Output Format:</strong>
+                            <span class="helper-text">JPG is best for minimum file size</span>
+                        </label>
+                        <select id="img-format-select" class="select-styled">
+                            <option value="image/jpeg" selected>JPG / JPEG (Standard Exam Format)</option>
+                            <option value="image/webp">WEBP (Modern High-Efficiency)</option>
+                            <option value="image/png">PNG (Lossless)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Action Button -->
+                <button class="btn-action" id="btn-compress-img">
+                    <i class="fa-solid fa-bolt"></i> Compress to Target KB Now
+                </button>
+
+                <!-- Processing & Progress -->
+                <div class="progress-wrap" id="img-progress-wrap" style="display: none;">
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="img-progress-fill"></div>
+                    </div>
+                    <span class="progress-text" id="img-progress-text">Analyzing &amp; compressing...</span>
+                </div>
+
+                <!-- Result Card -->
+                <div class="result-card" id="img-result-card" style="display: none;">
+                    <div class="result-stats">
+                        <div class="stat-pill success">
+                            <i class="fa-solid fa-check-circle"></i>
+                            <div>
+                                <span class="stat-label">Result Size</span>
+                                <strong id="img-result-size">78.4 KB</strong>
+                            </div>
+                        </div>
+                        <div class="stat-pill">
+                            <i class="fa-solid fa-arrow-trend-down"></i>
+                            <div>
+                                <span class="stat-label">Reduction</span>
+                                <strong id="img-result-saving">-94%</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comparison Preview -->
+                    <div class="preview-comparison">
+                        <div class="preview-side">
+                            <span>Compressed Preview</span>
+                            <img id="img-preview" alt="Compressed Preview">
+                        </div>
+                    </div>
+
+                    <a id="img-download-btn" class="btn-download" download="compressed.jpg">
+                        <i class="fa-solid fa-download"></i> Download Compressed Image
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: PDF TO JPG CONVERTER -->
+        <section class="tool-card" id="tab-pdf-to-jpg">
+            <div class="tool-header">
+                <div class="tool-icon-wrap"><i class="fa-solid fa-file-pdf"></i></div>
+                <div>
+                    <h2>PDF to JPG Converter <span class="tag-accent">Page by Page</span></h2>
+                    <p>Convert any PDF into crisp, individual JPG images without uploading to external servers.</p>
+                </div>
+            </div>
+
+            <!-- Drop Zone -->
+            <div class="drop-zone" id="pdf2jpg-drop-zone">
+                <input type="file" id="pdf2jpg-input" accept="application/pdf" class="file-input-hidden">
+                <div class="drop-content">
+                    <div class="upload-icon-circle"><i class="fa-solid fa-file-pdf"></i></div>
+                    <h3>Drag &amp; Drop PDF Document or <span class="browse-link">Browse</span></h3>
+                    <p class="drop-hint">Supports Single &amp; Multi-page PDF documents</p>
+                </div>
+            </div>
+
+            <!-- Workbench -->
+            <div class="tool-workbench" id="pdf2jpg-workbench" style="display: none;">
+                <div class="file-info-bar">
+                    <div class="file-meta">
+                        <i class="fa-solid fa-file-lines"></i>
+                        <span id="pdf2jpg-name" class="file-name">document.pdf</span>
+                        <span class="file-size-badge" id="pdf2jpg-orig-size">Loading pages...</span>
+                    </div>
+                    <button class="btn-text-danger" id="pdf2jpg-remove-btn"><i class="fa-solid fa-xmark"></i> Remove</button>
+                </div>
+
+                <!-- DPI Setting -->
+                <div class="controls-grid">
+                    <div class="control-box">
+                        <label for="pdf2jpg-dpi">
+                            <strong>Rendering Resolution (Quality):</strong>
+                            <span class="helper-text">High quality renders sharper text</span>
+                        </label>
+                        <select id="pdf2jpg-dpi" class="select-styled">
+                            <option value="1.5">Standard Quality (Fast &bull; ~110 DPI)</option>
+                            <option value="2.0" selected>High Quality (Recommended &bull; ~150 DPI)</option>
+                            <option value="3.0">Ultra High Resolution (Crisp &bull; ~220 DPI)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Action Button -->
+                <button class="btn-action" id="btn-convert-pdf2jpg">
+                    <i class="fa-solid fa-images"></i> Convert Pages to JPG
+                </button>
+
+                <!-- Progress -->
+                <div class="progress-wrap" id="pdf2jpg-progress-wrap" style="display: none;">
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="pdf2jpg-progress-fill"></div>
+                    </div>
+                    <span class="progress-text" id="pdf2jpg-progress-text">Rendering PDF pages...</span>
+                </div>
+
+                <!-- Pages Gallery Output -->
+                <div id="pdf2jpg-results" class="pages-gallery-wrap" style="display: none;">
+                    <div class="gallery-top-bar">
+                        <h3>Converted Pages (<span id="pdf2jpg-count">0</span>)</h3>
+                        <button class="btn-secondary" id="btn-download-all-zip">
+                            <i class="fa-solid fa-file-zipper"></i> Download All as ZIP
+                        </button>
+                    </div>
+                    <div class="pages-grid" id="pdf2jpg-gallery"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: JPG / IMAGES TO PDF -->
+        <section class="tool-card" id="tab-jpg-to-pdf">
+            <div class="tool-header">
+                <div class="tool-icon-wrap"><i class="fa-solid fa-images"></i></div>
+                <div>
+                    <h2>Images to PDF Merger <span class="tag-accent">Multi-Image</span></h2>
+                    <p>Combine multiple JPG, PNG, or WEBP photos into a single, clean PDF file in seconds.</p>
+                </div>
+            </div>
+
+            <!-- Drop Zone (supports multiple) -->
+            <div class="drop-zone" id="jpg2pdf-drop-zone">
+                <input type="file" id="jpg2pdf-input" accept="image/jpeg,image/png,image/webp" multiple class="file-input-hidden">
+                <div class="drop-content">
+                    <div class="upload-icon-circle"><i class="fa-solid fa-photo-film"></i></div>
+                    <h3>Drag &amp; Drop Images or <span class="browse-link">Browse (Select Multiple)</span></h3>
+                    <p class="drop-hint">Select multiple certificates, marksheets, or documents</p>
+                </div>
+            </div>
+
+            <!-- Workbench -->
+            <div class="tool-workbench" id="jpg2pdf-workbench" style="display: none;">
+                <div class="file-info-bar">
+                    <div class="file-meta">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <span id="jpg2pdf-count-badge" class="file-name">0 images selected</span>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn-text-primary" id="jpg2pdf-add-more-btn"><i class="fa-solid fa-plus"></i> Add More</button>
+                        <button class="btn-text-danger" id="jpg2pdf-clear-btn"><i class="fa-solid fa-trash"></i> Clear All</button>
+                    </div>
+                </div>
+
+                <!-- Page settings -->
+                <div class="controls-grid">
+                    <div class="control-box">
+                        <label for="jpg2pdf-orientation">
+                            <strong>Page Orientation:</strong>
+                        </label>
+                        <select id="jpg2pdf-orientation" class="select-styled">
+                            <option value="portrait" selected>Portrait (Standard Vertical)</option>
+                            <option value="landscape">Landscape (Horizontal)</option>
+                            <option value="auto">Auto-Fit to Image Aspect Ratio</option>
+                        </select>
+                    </div>
+
+                    <div class="control-box">
+                        <label for="jpg2pdf-margin">
+                            <strong>Page Margin:</strong>
+                        </label>
+                        <select id="jpg2pdf-margin" class="select-styled">
+                            <option value="0">No Margins (Edge-to-Edge)</option>
+                            <option value="10" selected>Small Margin (10mm - Standard)</option>
+                            <option value="20">Large Margin (20mm - Formal)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Images Sortable List / Thumbnails -->
+                <div class="selected-images-grid" id="jpg2pdf-thumbs"></div>
+
+                <!-- Action Button -->
+                <button class="btn-action" id="btn-generate-pdf">
+                    <i class="fa-solid fa-file-export"></i> Assemble &amp; Download PDF
+                </button>
+            </div>
+        </section>
+
+        <!-- TAB 4: COMPRESS PDF -->
+        <section class="tool-card" id="tab-compress-pdf">
+            <div class="tool-header">
+                <div class="tool-icon-wrap"><i class="fa-solid fa-file-zipper"></i></div>
+                <div>
+                    <h2>PDF Compressor <span class="tag-accent">In-Browser</span></h2>
+                    <p>Reduce bulky PDF file sizes by re-rendering canvas streams directly inside your browser.</p>
+                </div>
+            </div>
+
+            <!-- Drop Zone -->
+            <div class="drop-zone" id="cpdf-drop-zone">
+                <input type="file" id="cpdf-input" accept="application/pdf" class="file-input-hidden">
+                <div class="drop-content">
+                    <div class="upload-icon-circle"><i class="fa-solid fa-file-zipper"></i></div>
+                    <h3>Drag &amp; Drop PDF to Compress or <span class="browse-link">Browse</span></h3>
+                    <p class="drop-hint">Compress large thesis, certificates, or book chapters</p>
+                </div>
+            </div>
+
+            <!-- Workbench -->
+            <div class="tool-workbench" id="cpdf-workbench" style="display: none;">
+                <div class="file-info-bar">
+                    <div class="file-meta">
+                        <i class="fa-solid fa-file-lines"></i>
+                        <span id="cpdf-name" class="file-name">document.pdf</span>
+                        <span class="file-size-badge" id="cpdf-orig-size">Size: 0 MB</span>
+                    </div>
+                    <button class="btn-text-danger" id="cpdf-remove-btn"><i class="fa-solid fa-xmark"></i> Remove</button>
+                </div>
+
+                <div class="controls-grid">
+                    <div class="control-box">
+                        <label for="cpdf-level">
+                            <strong>Compression Intensity:</strong>
+                            <span class="helper-text">Higher compression reduces more file size</span>
+                        </label>
+                        <select id="cpdf-level" class="select-styled">
+                            <option value="low">Low Compression (Best Quality &bull; ~25% reduction)</option>
+                            <option value="medium" selected>Balanced Compression (Recommended &bull; ~50% reduction)</option>
+                            <option value="high">Maximum Compression (Smallest File &bull; ~75% reduction)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="btn-action" id="btn-compress-pdf-action">
+                    <i class="fa-solid fa-file-zipper"></i> Compress PDF Now
+                </button>
+
+                <div class="progress-wrap" id="cpdf-progress-wrap" style="display: none;">
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="cpdf-progress-fill"></div>
+                    </div>
+                    <span class="progress-text" id="cpdf-progress-text">Processing pages...</span>
+                </div>
+
+                <div class="result-card" id="cpdf-result-card" style="display: none;">
+                    <div class="result-stats">
+                        <div class="stat-pill success">
+                            <i class="fa-solid fa-check-circle"></i>
+                            <div>
+                                <span class="stat-label">New PDF Size</span>
+                                <strong id="cpdf-result-size">0 KB</strong>
+                            </div>
+                        </div>
+                        <div class="stat-pill">
+                            <i class="fa-solid fa-arrow-trend-down"></i>
+                            <div>
+                                <span class="stat-label">Saved</span>
+                                <strong id="cpdf-result-saving">-0%</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <a id="cpdf-download-btn" class="btn-download" download="compressed.pdf">
+                        <i class="fa-solid fa-download"></i> Download Compressed PDF
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Privacy Assurance Banner -->
+        <section class="privacy-assurance-card">
+            <div class="shield-big"><i class="fa-solid fa-shield-cat"></i></div>
+            <div class="assurance-content">
+                <h3>Why this is 100% Secure &amp; Leak-Proof</h3>
+                <p>
+                    Unlike commercial websites that upload your Aadhaar, PAN, certificates, or research manuscripts to remote cloud servers (where data breaches happen), 
+                    <strong>this studio executes code purely inside your browser's sandboxed JavaScript engine</strong>. 
+                    You can even turn off your Wi-Fi/Internet after the page loads, and the tools will still work perfectly!
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="studio-footer">
+        <p>&copy; 2026 Alimam Ansari. All file conversions are local &amp; client-side.</p>
+        <a href="index.html" class="footer-return-link"><i class="fa-solid fa-arrow-left"></i> Return to Main Portfolio</a>
+    </footer>
+
+    <!-- Tools JavaScript -->
+    <script src="tools.js?v=1.0.0"></script>
+</body>
+</html>
